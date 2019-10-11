@@ -36101,18 +36101,25 @@ var ical = require('ical');
 var login = 'asimon23';
 var url = 'https://cors-anywhere.herokuapp.com/' + 'http://web.isen-bretagne.fr/EDT/' + login + '.ics';
 
+var matiereUniques = [];
+
 ical.fromURL(url, {}, function (err, data) {
     let tab = [];
+    let allMatieres = [];
     for (var i in data) {
         if (data.hasOwnProperty(i)) {
             var ev = data[i];
             if (data[i].type == 'VEVENT') {
                 var cours = splitMaker("" + ev.description, "" + ev.start, "" + ev.end);
                 tab.push(cours);
+                allMatieres.push(cours.matiere);
             }
         }
     }
     
+    matiereUniques = Array.from(new Set(allMatieres));
+    console.log(matiereUniques);
+
     let model = document.getElementById('edt-item');
     let contenu = document.getElementById('list-item');
     
@@ -36129,12 +36136,23 @@ ical.fromURL(url, {}, function (err, data) {
         contenu.appendChild(modelClone);
     });
 });
+
+/*  Liste de toutes les catégories de matières  */ 
+function getMatieres(){
+    return matiereUniques;
+}
+
+/*  La date du jour    */
 function getFullDate(date){
     return date.substr(4,11);
 }
+
+/*  L'heure de la matière   */
 function getDate(date) {
     return date.substr(16, 5);
 }
+
+/*  Créer le JSON en partant du ical    */
 function createJson(array) {
     return ({
         date: array[0],
@@ -36147,6 +36165,8 @@ function createJson(array) {
         notes: array[7]
     });
 }
+
+/*  Sépare toutes les différentes partie d'un cours */
 function splitMaker(activity, start, end) {
     var payload = [];
     var array = activity.split('\n');
