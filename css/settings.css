@@ -1,0 +1,21 @@
+body{
+    background-color: #292C42;
+    font-family: 'Nunito';
+    color: white;
+}
+
+.fleche{
+    width: 100%;
+    position: absolute;
+    
+}
+#fleche img{
+    transform: rotate(-90deg);
+    width : 35px;
+    height: 35px;
+    float: right;
+}
+
+#login{
+    
+}
