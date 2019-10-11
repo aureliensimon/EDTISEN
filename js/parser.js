@@ -34,6 +34,8 @@ ical.fromURL(url, {}, function (err, data) {
         modelClone.childNodes[7].firstElementChild.innerText = element.dateDebut;
         modelClone.childNodes[7].lastElementChild.innerText = element.dateFin;
         modelClone.childNodes[9].innerHTML = element.lieu;
+        modelClone.style.display = 'block';
+
         contenu.appendChild(modelClone);
     });
 });
