@@ -1,0 +1,39 @@
+body {
+    background-color: #292C42;
+    font-family: 'Nunito', sans-serif;
+    color: white;
+}
+
+.edt-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 3vmax;
+    width: 92%;
+    margin: 0 auto;
+    margin-top: 25px;
+    background-color: #32374F;
+    border-radius: 15px 15px 15px 15px;
+}
+.lesson-Name {
+    padding-left: 3vmax;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: white;
+    border-left: 3.5px solid #0478EB;
+}
+.lesson-Professor {
+    opacity: 0.7;
+    padding-left: 3.5vmax;
+}
+.lesson-Date {
+    font-weight: 700;
+    font-size: 1.5em;
+    margin-top: 20px;
+    padding-left: 3.5vmax;
+}
+.lesson-Location {
+    float: right;
+    margin-top: -30px;
+    margin-right: 50px;
+    font-size: 1.5em;
+}
