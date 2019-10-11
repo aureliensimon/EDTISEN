@@ -23,7 +23,21 @@
     <title>Emploi Du Temps</title>
 </head>
 
-<body>
+<body onload="getTime()">
+    <div id="navbar">
+        <img id="back-arrow" src="../img/expand-arrow.png"/>
+        <div id="navbar-presentation">
+            <span id="navbar-presentation-text">emploi du temps</span>
+            <div id="navbar-date">
+                <span id="date"></span>
+            </div>
+        </div>
+        <div id="navbar-container">
+            <div class="navbar-container-item" id="daily">Jour</div>
+            <div class="navbar-container-item" id="weekly">Semaine</div>
+            <div class="navbar-container-item" id="monthly">Mois</div>
+        </div>
+    </div>
 
     <div id="list-item">
         <p id="nothingfound">Chargement ...</p>
