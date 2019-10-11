@@ -34,6 +34,9 @@ body {
 .lesson-Location {
     float: right;
     margin-top: -30px;
-    margin-right: 50px;
+    margin-right: 20px;
     font-size: 1.5em;
+}
+.lesson-Location-Number {
+    color: #0478EB;
 }
