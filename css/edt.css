@@ -4,7 +4,7 @@ body {
     color: white;
 }
 
-.edt-item {
+#edt-item {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 3vmax;
@@ -39,4 +39,12 @@ body {
 }
 .lesson-Location-Number {
     color: #0478EB;
+}
+
+#nothingfound {
+    font-size: 4em;
+    margin-top: 50%;
+    opacity: 0.7;
+    text-align: center;
+    vertical-align: middle;
 }
