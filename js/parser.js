@@ -38,6 +38,16 @@ ical.fromURL(url, {}, function (err, data) {
 
         contenu.appendChild(modelClone);
     });
+
+    let modelsetting=document.getElementById("couleurmatiere");
+    let learn=getMatieres();
+    
+    learn.forEach(function(element){
+        let modelsettingclone=modelsetting.cloneNode(true);
+        modelsettingclone.childNodes[1].childNodes[1].innerHTML=element;
+        modelsettingclone.style.display = 'block';
+    });
+
 });
 
 /*  Liste de toutes les catégories de matières  */ 
