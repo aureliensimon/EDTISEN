@@ -4,7 +4,7 @@ body {
     color: white;
 }
 
-.edt-item {
+#edt-item {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 3vmax;
