@@ -26,8 +26,15 @@ function getCours () {
         }
         matiereUniques = Array.from(new Set(allMatieres));
 
-        loadItems(tab);
-        loadColors();
+        let CurrentPage = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+        switch(CurrentPage) {
+            case 'edt.html':
+                loadItems(tab);
+                break;
+            case 'settings.html':
+                loadColors();
+                break;
+        }
     });
 }
 
