@@ -86,6 +86,9 @@ body {
     margin-left: 3vw;
     transform: rotate(90deg);
 }
+#back-arrow:hover {
+    cursor: pointer;
+}
 #navbar-presentation {
     margin-top: 2vh;
     margin-left: 5vw;
