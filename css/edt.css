@@ -25,7 +25,7 @@ body {
     border-left: 3.5px solid #0478EB;
 }
 .lesson-Professor {
-    opacity: 0.7;
+    opacity: 1;
     padding-left: 3.5vmax;
 }
 .lesson-Date {
@@ -53,6 +53,9 @@ body {
 }
 
 #navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
     background-color: #202439;
 }
 #navbar-container {
@@ -66,18 +69,18 @@ body {
     font-size: 1.4em;
     font-weight: 700;
 }
+.navbar-container-item:hover {
+    cursor: pointer;
+}
 #daily {
-    float:left;
-    border-bottom: 3px solid #0478EB;
+    float: left;
 }
 #weekly {
-    opacity: 0.5;
     display: inline-block;
     margin: 0 auto; 
 }
 #monthly {
-    float:right;
-    opacity: 0.5;
+    float: right;
 }
 
 #back-arrow {
@@ -105,4 +108,8 @@ body {
     font-family: 'Nunito';
     font-size: 1.1em;
     text-transform: uppercase;
+}
+
+#list-item {
+    margin-top: 35vh;
 }
