@@ -1,26 +1,48 @@
+/*  TO COMPILE THIS FILE    
+    browserify js/parser.js -o js/bundle.js
+*/
+
 var ical = require('ical');
 var login = 'asimon23';
 var url = 'https://cors-anywhere.herokuapp.com/' + 'http://web.isen-bretagne.fr/EDT/' + login + '.ics';
 
 var matiereUniques = [];
 
-ical.fromURL(url, {}, function (err, data) {
+getCours();
+
+function getCours () {
     let tab = [];
     let allMatieres = [];
-    for (var i in data) {
-        if (data.hasOwnProperty(i)) {
-            var ev = data[i];
-            if (data[i].type == 'VEVENT') {
-                var cours = splitMaker("" + ev.description, "" + ev.start, "" + ev.end);
-                tab.push(cours);
-                allMatieres.push(cours.matiere);
+    ical.fromURL(url, {}, function (err, data) {
+        for (var i in data) {
+            if (data.hasOwnProperty(i)) {
+                var ev = data[i];
+                if (data[i].type == 'VEVENT') {
+                    var cours = splitMaker("" + ev.description, "" + ev.start, "" + ev.end);
+                    tab.push(cours);
+                    allMatieres.push(cours.matiere);
+                }
             }
         }
-    }
-    
-    matiereUniques = Array.from(new Set(allMatieres));
-    console.log(matiereUniques);
+        matiereUniques = Array.from(new Set(allMatieres));
 
+        loadItems(tab);
+        loadColors();
+    });
+}
+
+function loadColors () {
+    let modelsetting = document.getElementById("couleurmatiere");
+    let learn = getMatieres();
+    
+    learn.forEach(function(element){
+        let modelsettingclone=modelsetting.cloneNode(true);
+        modelsettingclone.childNodes[1].childNodes[1].innerHTML=element;
+        modelsettingclone.style.display = 'block';
+    });
+}
+
+function loadItems (tab) {
     let model = document.getElementById('edt-item');
     let contenu = document.getElementById('list-item');
     
@@ -38,18 +60,7 @@ ical.fromURL(url, {}, function (err, data) {
 
         contenu.appendChild(modelClone);
     });
-
-    let modelsetting=document.getElementById("couleurmatiere");
-    let learn=getMatieres();
-    
-    learn.forEach(function(element){
-        let modelsettingclone=modelsetting.cloneNode(true);
-        modelsettingclone.childNodes[1].childNodes[1].innerHTML=element;
-        modelsettingclone.style.display = 'block';
-    });
-
-});
-
+}
 /*  Liste de toutes les catégories de matières  */ 
 function getMatieres(){
     return matiereUniques;

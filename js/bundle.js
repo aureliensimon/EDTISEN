@@ -36097,29 +36097,51 @@ function extend() {
 }
 
 },{}],207:[function(require,module,exports){
+/*  TO COMPILE THIS FILE    
+    browserify js/parser.js -o js/bundle.js
+*/
+
 var ical = require('ical');
 var login = 'asimon23';
 var url = 'https://cors-anywhere.herokuapp.com/' + 'http://web.isen-bretagne.fr/EDT/' + login + '.ics';
 
 var matiereUniques = [];
 
-ical.fromURL(url, {}, function (err, data) {
+getCours();
+
+function getCours () {
     let tab = [];
     let allMatieres = [];
-    for (var i in data) {
-        if (data.hasOwnProperty(i)) {
-            var ev = data[i];
-            if (data[i].type == 'VEVENT') {
-                var cours = splitMaker("" + ev.description, "" + ev.start, "" + ev.end);
-                tab.push(cours);
-                allMatieres.push(cours.matiere);
+    ical.fromURL(url, {}, function (err, data) {
+        for (var i in data) {
+            if (data.hasOwnProperty(i)) {
+                var ev = data[i];
+                if (data[i].type == 'VEVENT') {
+                    var cours = splitMaker("" + ev.description, "" + ev.start, "" + ev.end);
+                    tab.push(cours);
+                    allMatieres.push(cours.matiere);
+                }
             }
         }
-    }
-    
-    matiereUniques = Array.from(new Set(allMatieres));
-    console.log(matiereUniques);
+        matiereUniques = Array.from(new Set(allMatieres));
 
+        loadItems(tab);
+        loadColors();
+    });
+}
+
+function loadColors () {
+    let modelsetting = document.getElementById("couleurmatiere");
+    let learn = getMatieres();
+    
+    learn.forEach(function(element){
+        let modelsettingclone=modelsetting.cloneNode(true);
+        modelsettingclone.childNodes[1].childNodes[1].innerHTML=element;
+        modelsettingclone.style.display = 'block';
+    });
+}
+
+function loadItems (tab) {
     let model = document.getElementById('edt-item');
     let contenu = document.getElementById('list-item');
     
@@ -36137,8 +36159,7 @@ ical.fromURL(url, {}, function (err, data) {
 
         contenu.appendChild(modelClone);
     });
-});
-
+}
 /*  Liste de toutes les catégories de matières  */ 
 function getMatieres(){
     return matiereUniques;
@@ -83418,8 +83439,72 @@ var isFullyConvertible = totext.isFullyConvertible;
 });
 
 },{"luxon":311}],338:[function(require,module,exports){
-arguments[4][168][0].apply(exports,arguments)
-},{"buffer":54,"dup":168}],339:[function(require,module,exports){
+/* eslint-disable node/no-deprecated-api */
+var buffer = require('buffer')
+var Buffer = buffer.Buffer
+
+// alternative to using Object.keys for old browsers
+function copyProps (src, dst) {
+  for (var key in src) {
+    dst[key] = src[key]
+  }
+}
+if (Buffer.from && Buffer.alloc && Buffer.allocUnsafe && Buffer.allocUnsafeSlow) {
+  module.exports = buffer
+} else {
+  // Copy properties from require('buffer')
+  copyProps(buffer, exports)
+  exports.Buffer = SafeBuffer
+}
+
+function SafeBuffer (arg, encodingOrOffset, length) {
+  return Buffer(arg, encodingOrOffset, length)
+}
+
+SafeBuffer.prototype = Object.create(Buffer.prototype)
+
+// Copy static methods from Buffer
+copyProps(Buffer, SafeBuffer)
+
+SafeBuffer.from = function (arg, encodingOrOffset, length) {
+  if (typeof arg === 'number') {
+    throw new TypeError('Argument must not be a number')
+  }
+  return Buffer(arg, encodingOrOffset, length)
+}
+
+SafeBuffer.alloc = function (size, fill, encoding) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number')
+  }
+  var buf = Buffer(size)
+  if (fill !== undefined) {
+    if (typeof encoding === 'string') {
+      buf.fill(fill, encoding)
+    } else {
+      buf.fill(fill)
+    }
+  } else {
+    buf.fill(0)
+  }
+  return buf
+}
+
+SafeBuffer.allocUnsafe = function (size) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number')
+  }
+  return Buffer(size)
+}
+
+SafeBuffer.allocUnsafeSlow = function (size) {
+  if (typeof size !== 'number') {
+    throw new TypeError('Argument must be a number')
+  }
+  return buffer.SlowBuffer(size)
+}
+
+},{"buffer":54}],339:[function(require,module,exports){
 (function (process){
 /* eslint-disable node/no-deprecated-api */
 
