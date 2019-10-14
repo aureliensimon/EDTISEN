@@ -48,7 +48,7 @@ body {
 .arrow-img {
     float: right;
     width: 6vh;
-    margin-top: 3vh;
+    margin-top: 2vh;
     margin-right: 2vw;
     transform: rotate(-90deg);
 }
