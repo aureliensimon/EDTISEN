@@ -8,8 +8,6 @@ var url = 'https://cors-anywhere.herokuapp.com/' + 'http://web.isen-bretagne.fr/
 
 var matiereUniques = [];
 
-getCours();
-
 function getCours () {
     let tab = [];
     let allMatieres = [];
@@ -37,15 +35,20 @@ function getCours () {
         }
     });
 }
+getCours();
 
 function loadColors () {
     let modelsetting = document.getElementById("couleurmatiere");
+    let contenu = document.getElementById("liste-matieres");
     let learn = getMatieres();
     
     learn.forEach(function(element){
-        let modelsettingclone=modelsetting.cloneNode(true);
+        let modelsettingclone = modelsetting.cloneNode(true);
+
         modelsettingclone.childNodes[1].childNodes[1].innerHTML=element;
         modelsettingclone.style.display = 'block';
+
+        contenu.appendChild(modelsettingclone);
     });
 }
 
