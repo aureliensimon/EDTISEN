@@ -53,12 +53,11 @@ body{
     
     border-radius: 50%;
     border:solid white;
-    float:right;
     background-color: aqua;
 }
 #couleurmatiere{
     display: flex;
-    text-align: center;
+    width: 100%;
 }
 
 #matiere{
