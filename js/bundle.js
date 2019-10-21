@@ -36152,22 +36152,26 @@ function loadColors () {
 }
 
 function loadItems (tab) {
+    //let nowDate = matchDate();
+    let nowDate = 'Oct 14 2019';
     let model = document.getElementById('edt-item');
     let contenu = document.getElementById('list-item');
     
     while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
 
     tab.forEach(function(element){
-        let modelClone = model.cloneNode(true);
-        
-        modelClone.childNodes[1].innerHTML = element.matiere2;
-        modelClone.childNodes[5].innerHTML = element.prof;
-        modelClone.childNodes[7].firstElementChild.innerText = element.dateDebut;
-        modelClone.childNodes[7].lastElementChild.innerText = element.dateFin;
-        modelClone.childNodes[9].innerHTML = element.lieu;
-        modelClone.style.display = 'block';
+        if(element.date == nowDate){
+            let modelClone = model.cloneNode(true);
+            
+            modelClone.childNodes[1].innerHTML = element.matiere2;
+            modelClone.childNodes[5].innerHTML = element.prof;
+            modelClone.childNodes[7].firstElementChild.innerText = element.dateDebut;
+            modelClone.childNodes[7].lastElementChild.innerText = element.dateFin;
+            modelClone.childNodes[9].innerHTML = element.lieu;
+            modelClone.style.display = 'block';
 
-        contenu.appendChild(modelClone);
+            contenu.appendChild(modelClone);
+        }
     });
 }
 /*  Liste de toutes les catégories de matières  */ 
@@ -36202,15 +36206,19 @@ function createJson(array) {
 /*  Sépare toutes les différentes partie d'un cours */
 function splitMaker(activity, start, end) {
     var payload = [];
+    
     var array = activity.split('\n');
     payload.push(getFullDate(start));
     payload.push(getDate(start), getDate(end));
+    
     for (var i = 0; i < array.length; i++) {
         if (!i || i == array.length)
             continue;
         payload.push(array[i].split('-')[1]);
     }
+    
     var payloadJSON = createJson(payload);
+    
     return payloadJSON;
 }
 
