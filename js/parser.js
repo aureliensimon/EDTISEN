@@ -46,13 +46,14 @@ function loadColors () {
         let modelsettingclone = modelsetting.cloneNode(true);
 
         modelsettingclone.childNodes[1].childNodes[1].innerHTML=element;
-        modelsettingclone.style.display = 'block';
+        modelsettingclone.style.display = 'flex';
 
         contenu.appendChild(modelsettingclone);
     });
 }
 
 function loadItems (tab) {
+    console.table(tab);
     let nowDate = getCurrentDate();
 
     let model = document.getElementById('edt-item');

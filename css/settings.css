@@ -41,16 +41,17 @@ body{
 #colorpicker div p{
     width: 100%;
     text-align: center;
+    font-size: 1.25em;
 }
 .colorbutton{
     text-align: center;
     padding: 2px;
-    width: 45%;
+    width: 50%;
 }
 #colorpoint{
     width: 40px;
     height: 40px;
-    
+    margin-left: 35%;
     border-radius: 50%;
     border:solid white;
     background-color: aqua;
@@ -58,8 +59,17 @@ body{
 #couleurmatiere{
     display: flex;
     width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #matiere{
     padding-top: 10px;
+}
+
+#titre{
+    float: left;
+    font-size: 1.5em;
+    margin-top: 3vh;
+    margin-left: 3vw;
 }
