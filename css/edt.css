@@ -59,8 +59,26 @@ body {
     background-color: #202439;
 }
 #navbar-container {
+    background-color: #202439;
     width:100%;
     text-align:center;
+}
+#navbar-presentation {
+    margin-top: 2vh;
+    margin-left: 5vw;
+}
+#navbar-presentation-text {
+    text-transform: uppercase;
+    font-size: 2em;
+    font-weight: 700;
+    font-family: 'Nunito';
+    color: white;
+}
+#navbar-date {
+    color: #0478EB;
+    font-family: 'Nunito';
+    font-size: 1.1em;
+    text-transform: uppercase;
 }
 .navbar-container-item {
     width:33%;
@@ -82,7 +100,6 @@ body {
 #monthly {
     float: right;
 }
-
 #back-arrow {
     width: 6vh;
     margin-top: 3vh;
@@ -92,24 +109,6 @@ body {
 #back-arrow:hover {
     cursor: pointer;
 }
-#navbar-presentation {
-    margin-top: 2vh;
-    margin-left: 5vw;
-}
-#navbar-presentation-text {
-    text-transform: uppercase;
-    font-size: 2em;
-    font-weight: 700;
-    font-family: 'Nunito';
-    color: white;
-}
-#navbar-date {
-    color: #0478EB;
-    font-family: 'Nunito';
-    font-size: 1.1em;
-    text-transform: uppercase;
-}
-
 #list-item {
-    margin-top: 35vh;
+    margin-top: 40vh;
 }
