@@ -1,3 +1,5 @@
+let listeCours = {};
+
 function getCurrentDate () {
     let nDate = (new Date).toLocaleDateString('en-GB', { 
         day: 'numeric',
@@ -61,4 +63,45 @@ function changeCSS (div) {
     
     div.style.color = 'white';
     div.style.borderBottom = '3px solid #0478EB';
+}
+
+function loadWeekItems () {
+    let dayTags = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+    
+    let model = document.getElementById('edt-item-week');
+    let contenu = document.getElementById('list-item');
+
+    while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
+
+    dayTags.forEach(element => {
+        let modelClone = model.cloneNode(true);
+
+        contenu.appendChild(modelClone);
+    });
+}
+
+function loadDayItems (date) {
+    let model = document.getElementById('edt-item-day');
+    let contenu = document.getElementById('list-item');
+    
+    while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
+
+    listeCours.forEach(function(element){
+        if(element.date == date){
+            let modelClone = model.cloneNode(true);
+            
+            modelClone.childNodes[1].innerHTML = element.matiere2;
+            modelClone.childNodes[5].innerHTML = element.prof;
+            modelClone.childNodes[7].firstElementChild.innerText = element.dateDebut;
+            modelClone.childNodes[7].lastElementChild.innerText = element.dateFin;
+            modelClone.childNodes[9].innerHTML = element.lieu;
+            modelClone.style.display = 'block';
+
+            contenu.appendChild(modelClone);
+        }
+    });
+}
+
+function fillListeCours (tab) {
+    listeCours = tab;
 }

@@ -36101,6 +36101,13 @@ function extend() {
     browserify js/parser.js -o js/bundle.js
 */
 
+/*
+    IDEE :
+    - REMPLIR UN TABLEAU EN VARIABLE GLOBALE DANS UN AUTRE SCRIPT 
+    (cf ligne 37) POUR ENSUITE L'UTILISER DANS LES FONCTIONS
+    (POUR PLUS TARD TROP DE TRUCS A CHANGER SINON) 
+*/
+
 var ical = require('ical');
 var login = 'asimon23';
 var url = 'https://cors-anywhere.herokuapp.com/' + 'http://web.isen-bretagne.fr/EDT/' + login + '.ics';
@@ -36126,7 +36133,8 @@ function getCours () {
         let CurrentPage = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
         switch(CurrentPage) {
             case 'edt.html':
-                loadItems(tab);
+                fillListeCours(tab);
+                loadDayItems('Oct 14 2019');
                 break;
             case 'settings.html':
                 loadColors();
@@ -36151,29 +36159,6 @@ function loadColors () {
     });
 }
 
-function loadItems (tab) {
-    let nowDate = getCurrentDate();
-
-    let model = document.getElementById('edt-item');
-    let contenu = document.getElementById('list-item');
-    
-    while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
-
-    tab.forEach(function(element){
-        if(element.date == nowDate){
-            let modelClone = model.cloneNode(true);
-            
-            modelClone.childNodes[1].innerHTML = element.matiere2;
-            modelClone.childNodes[5].innerHTML = element.prof;
-            modelClone.childNodes[7].firstElementChild.innerText = element.dateDebut;
-            modelClone.childNodes[7].lastElementChild.innerText = element.dateFin;
-            modelClone.childNodes[9].innerHTML = element.lieu;
-            modelClone.style.display = 'block';
-
-            contenu.appendChild(modelClone);
-        }
-    });
-}
 /*  Liste de toutes les catégories de matières  */ 
 function getMatieres(){
     return matiereUniques;
