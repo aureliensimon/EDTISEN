@@ -36101,6 +36101,13 @@ function extend() {
     browserify js/parser.js -o js/bundle.js
 */
 
+/*
+    IDEE :
+    - REMPLIR UN TABLEAU EN VARIABLE GLOBALE DANS UN AUTRE SCRIPT 
+    (cf ligne 37) POUR ENSUITE L'UTILISER DANS LES FONCTIONS
+    (POUR PLUS TARD TROP DE TRUCS A CHANGER SINON) 
+*/
+
 var ical = require('ical');
 var login = 'asimon23';
 var url = 'https://cors-anywhere.herokuapp.com/' + 'http://web.isen-bretagne.fr/EDT/' + login + '.ics';
@@ -36126,7 +36133,8 @@ function getCours () {
         let CurrentPage = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
         switch(CurrentPage) {
             case 'edt.html':
-                loadItems(tab);
+                fillListeCours(tab);
+                loadDayItems('Oct 14 2019');
                 break;
             case 'settings.html':
                 loadColors();
@@ -36151,6 +36159,7 @@ function loadColors () {
     });
 }
 
+<<<<<<< HEAD
 function loadItems (tab) {
     console.table(tab);
     let nowDate = getCurrentDate();
@@ -36175,6 +36184,8 @@ function loadItems (tab) {
         }
     });
 }
+=======
+>>>>>>> 8133348e53bed3553c0114a5679eb45986d5e656
 /*  Liste de toutes les catégories de matières  */ 
 function getMatieres(){
     return matiereUniques;

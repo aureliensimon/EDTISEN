@@ -32,8 +32,8 @@
             </div>
         </div>
         <div id="navbar-container">
-            <div class="navbar-container-item" id="daily" onclick="changeCSS(this)">Jour</div>
-            <div class="navbar-container-item" id="weekly" onclick="changeCSS(this)">Semaine</div>
+            <div class="navbar-container-item" id="daily" onclick="changeCSS(this);loadDayItems ('Oct 14 2019')">Jour</div>
+            <div class="navbar-container-item" id="weekly" onclick="changeCSS(this); loadWeekItems()">Semaine</div>
             <div class="navbar-container-item" id="monthly" onclick="changeCSS(this)">Mois</div>
         </div>
     </div>
@@ -42,7 +42,7 @@
         <p id="nothingfound">Chargement ...</p>
     </div>
 
-    <div id="edt-item" style="display: none;">
+    <div id="edt-item-day" style="display: none;">
         <span class="lesson-Name"></span>
         <br>
         <span class="lesson-Professor"></span>
@@ -52,6 +52,10 @@
             <span class="lesson-Date-End"></span>
         </div>
         <span class="lesson-Location">S<span class="lesson-Location-Number"></span></span>
+    </div>
+
+    <div id="edt-item-week" style="display: none;">
+        
     </div>
 
     <script type="text/javascript" src="../js/edt.js"></script>
