@@ -36152,8 +36152,8 @@ function loadColors () {
 }
 
 function loadItems (tab) {
-    //let nowDate = matchDate();
-    let nowDate = 'Oct 14 2019';
+    let nowDate = getCurrentDate();
+
     let model = document.getElementById('edt-item');
     let contenu = document.getElementById('list-item');
     

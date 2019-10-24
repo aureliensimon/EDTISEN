@@ -53,8 +53,8 @@ function loadColors () {
 }
 
 function loadItems (tab) {
-    let nowDate = matchDate();
-    
+    let nowDate = getCurrentDate();
+
     let model = document.getElementById('edt-item');
     let contenu = document.getElementById('list-item');
     

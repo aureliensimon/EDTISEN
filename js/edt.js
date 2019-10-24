@@ -1,17 +1,21 @@
-function matchDate () {
-    let nDate = (new Date).toLocaleDateString('fr-FR', { 
+function getCurrentDate () {
+    let nDate = (new Date).toLocaleDateString('en-GB', { 
         day: 'numeric',
         month: 'short',
         year: 'numeric' }
     );
+    return(formatDate(nDate));
+}
 
-    return(
-        nDate.slice(3,6).charAt(0).toUpperCase() + nDate.slice(3,6).slice(1)
-        + ' '
-        + nDate.slice(0,2)
-        + ' '
-        + nDate.slice(8,12)
+function incrDate(pDate, number) {
+    let date = new Date(pDate);
+    date.setDate(date.getDate() + number);
+    date = date.toLocaleDateString('en-GB', { 
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric' }
     );
+    return(formatDate(date));
 }
 
 function getTime () {
@@ -24,6 +28,25 @@ function getTime () {
     let date = nDate.slice(0,3)  + ', ' + nDate.slice(5,7) + ' ' + nDate.slice(7,11);
 
     document.getElementById('date').innerHTML = date;
+}
+
+function formatDate (date) {
+    let i = 0;
+    let zero = ' ';
+    if(parseInt(date.slice(0,2)) < 10) {
+        i = 1;
+        zero = ' 0';
+    }
+
+    return(
+        date.slice(3-i,6-i).charAt(0).toUpperCase()
+        + date.slice(3-i,6-i).charAt(1).normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        + date.slice(4-i,6-i).slice(1)
+        + zero
+        + date.slice(0,2-i)
+        + ' '
+        + date.slice(7-i,11-i)
+    );
 }
 
 function changeCSS (div) {
