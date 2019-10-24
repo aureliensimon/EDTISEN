@@ -60,33 +60,6 @@ function loadColors () {
     });
 }
 
-<<<<<<< HEAD
-function loadItems (tab) {
-    console.table(tab);
-    let nowDate = getCurrentDate();
-
-    let model = document.getElementById('edt-item');
-    let contenu = document.getElementById('list-item');
-    
-    while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
-
-    tab.forEach(function(element){
-        if(element.date == nowDate){
-            let modelClone = model.cloneNode(true);
-            
-            modelClone.childNodes[1].innerHTML = element.matiere2;
-            modelClone.childNodes[5].innerHTML = element.prof;
-            modelClone.childNodes[7].firstElementChild.innerText = element.dateDebut;
-            modelClone.childNodes[7].lastElementChild.innerText = element.dateFin;
-            modelClone.childNodes[9].innerHTML = element.lieu;
-            modelClone.style.display = 'block';
-
-            contenu.appendChild(modelClone);
-        }
-    });
-}
-=======
->>>>>>> 8133348e53bed3553c0114a5679eb45986d5e656
 /*  Liste de toutes les catégories de matières  */ 
 function getMatieres(){
     return matiereUniques;
