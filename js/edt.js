@@ -1,4 +1,5 @@
 let listeCours = {};
+let targetDate = 'Oct 15 2019';
 
 function getCurrentDate () {
     let nDate = (new Date).toLocaleDateString('en-GB', { 
@@ -75,6 +76,9 @@ function loadWeekItems () {
 
     dayTags.forEach(element => {
         let modelClone = model.cloneNode(true);
+
+        modelClone.childNodes[1].innerHTML = element;
+        modelClone.style.display = 'block';
 
         contenu.appendChild(modelClone);
     });

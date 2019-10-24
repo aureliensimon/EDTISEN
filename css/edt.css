@@ -112,3 +112,22 @@ body {
 #list-item {
     margin-top: 40vh;
 }
+
+#edt-item-week {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 92%;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 25px;
+    background-color: #32374F;
+    border-radius: 15px 15px 15px 15px;
+    text-align: center;
+    border: 1px solid #0478EB;
+}
+.daytag {
+    line-height: 50px;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: white;
+}

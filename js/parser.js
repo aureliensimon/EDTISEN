@@ -35,7 +35,7 @@ function getCours () {
         switch(CurrentPage) {
             case 'edt.html':
                 fillListeCours(tab);
-                loadDayItems('Oct 14 2019');
+                loadDayItems(targetDate);
                 break;
             case 'settings.html':
                 loadColors();

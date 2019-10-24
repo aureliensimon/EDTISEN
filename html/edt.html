@@ -32,7 +32,7 @@
             </div>
         </div>
         <div id="navbar-container">
-            <div class="navbar-container-item" id="daily" onclick="changeCSS(this);loadDayItems ('Oct 14 2019')">Jour</div>
+            <div class="navbar-container-item" id="daily" onclick="changeCSS(this);loadDayItems (targetDate)">Jour</div>
             <div class="navbar-container-item" id="weekly" onclick="changeCSS(this); loadWeekItems()">Semaine</div>
             <div class="navbar-container-item" id="monthly" onclick="changeCSS(this)">Mois</div>
         </div>
@@ -55,7 +55,7 @@
     </div>
 
     <div id="edt-item-week" style="display: none;">
-        
+        <span class="daytag"></span>
     </div>
 
     <script type="text/javascript" src="../js/edt.js"></script>
