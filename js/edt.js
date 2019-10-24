@@ -1,5 +1,5 @@
 let listeCours = {};
-let targetDate = 'Oct 15 2019';
+let targetDate = 'Oct 14 2019';
 
 function getCurrentDate () {
     let nDate = (new Date).toLocaleDateString('en-GB', { 
@@ -104,6 +104,20 @@ function loadDayItems (date) {
             contenu.appendChild(modelClone);
         }
     });
+
+    if (!contenu.firstChild) {
+        var node = document.createElement("P");
+        node.id = 'no-lesson-emoji';
+        var textnode = document.createTextNode("(ノ^o^)ノ");
+        node.appendChild(textnode);
+        contenu.appendChild(node);
+
+        node = document.createElement("P");
+        node.id = 'no-lesson-text';
+        textnode = document.createTextNode("Aucun cours de prévu !");
+        node.appendChild(textnode);
+        contenu.appendChild(node);
+    }
 }
 
 function fillListeCours (tab) {

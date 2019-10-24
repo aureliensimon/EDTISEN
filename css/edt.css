@@ -45,7 +45,7 @@ body {
 }
 
 #nothingfound {
-    font-size: 4em;
+    font-size: 2em;
     margin-top: 50%;
     opacity: 0.7;
     text-align: center;
@@ -130,4 +130,20 @@ body {
     font-size: 1.5em;
     font-weight: 700;
     color: white;
+}
+
+#no-lesson-emoji {
+    font-size: 3em;
+    margin-top: 50%;
+    opacity: 0.6;
+    text-align: center;
+    vertical-align: middle;
+}
+#no-lesson-text {
+    font-family: 'Nunito';
+    font-style: italic;
+    font-size: 1.2em;
+    margin-top: 5%;
+    opacity: 0.6;
+    text-align: center;
 }
