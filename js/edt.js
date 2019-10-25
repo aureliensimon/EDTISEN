@@ -1,5 +1,5 @@
 let listeCours = {};
-let targetDate = 'Oct 15 2019';
+let targetDate = 'Oct 14 2019';
 
 function getCurrentDate () {
     let nDate = (new Date).toLocaleDateString('en-GB', { 
@@ -22,7 +22,7 @@ function incrDate(pDate, number) {
 }
 
 function getTime () {
-    let nDate = (new Date).toLocaleDateString('fr-FR', { 
+    let nDate = new Date(targetDate).toLocaleDateString('fr-FR', { 
         weekday: 'short',
         month: 'short',
         day: 'numeric' }
@@ -88,12 +88,13 @@ function loadWeekItems () {
         modelClone.childNodes[1].innerHTML = dayTags[i];
         modelClone.style.display = 'block';
         if (!(dayTagsEN.indexOf(targetDay) - i)) {
-            modelClone.style.border = '1px solid #e62532';
+            modelClone.style.border = '1px solid white';
         }
         modelClone.onclick = function () {
-            let oDate = incrDate(targetDate, -(dayTagsEN.indexOf(targetDay) - i));
-            loadDayItems(oDate);
+            targetDate = incrDate(targetDate, -(dayTagsEN.indexOf(targetDay) - i));
+            loadDayItems(targetDate);
             changeCSS(document.getElementById('daily'));
+            getTime();
         };
         contenu.appendChild(modelClone);
     }
