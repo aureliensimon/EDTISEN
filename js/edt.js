@@ -87,6 +87,9 @@ function loadWeekItems () {
 
         modelClone.childNodes[1].innerHTML = dayTags[i];
         modelClone.style.display = 'block';
+        if (!(dayTagsEN.indexOf(targetDay) - i)) {
+            modelClone.style.border = '1px solid #e62532';
+        }
         modelClone.onclick = function () {
             let oDate = incrDate(targetDate, -(dayTagsEN.indexOf(targetDay) - i));
             loadDayItems(oDate);
