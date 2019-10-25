@@ -1,5 +1,5 @@
 let listeCours = {};
-let targetDate = 'Oct 14 2019';
+let targetDate = 'Oct 15 2019';
 
 function getCurrentDate () {
     let nDate = (new Date).toLocaleDateString('en-GB', { 
@@ -33,9 +33,15 @@ function getTime () {
     document.getElementById('date').innerHTML = date;
 }
 
+function getDayTag (date) {
+    let cDate = new Date(date);
+    return (cDate.toString().slice(0,3));
+}
+
 function formatDate (date) {
     let i = 0;
     let zero = ' ';
+    
     if(parseInt(date.slice(0,2)) < 10) {
         i = 1;
         zero = ' 0';
@@ -68,20 +74,26 @@ function changeCSS (div) {
 
 function loadWeekItems () {
     let dayTags = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+    let dayTagsEN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    let targetDay = getDayTag(targetDate);
     
     let model = document.getElementById('edt-item-week');
     let contenu = document.getElementById('list-item');
 
     while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
 
-    dayTags.forEach(element => {
+    for (let i = 0; i < 7; i++) {
         let modelClone = model.cloneNode(true);
 
-        modelClone.childNodes[1].innerHTML = element;
+        modelClone.childNodes[1].innerHTML = dayTags[i];
         modelClone.style.display = 'block';
-
+        modelClone.onclick = function () {
+            let oDate = incrDate(targetDate, -(dayTagsEN.indexOf(targetDay) - i));
+            loadDayItems(oDate);
+            changeCSS(document.getElementById('daily'));
+        };
         contenu.appendChild(modelClone);
-    });
+    }
 }
 
 function loadDayItems (date) {

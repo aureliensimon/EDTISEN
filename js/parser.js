@@ -12,7 +12,6 @@
 var ical = require('ical');
 var login = 'asimon23';
 var url = 'https://cors-anywhere.herokuapp.com/' + 'http://web.isen-bretagne.fr/EDT/' + login + '.ics';
-
 var matiereUniques = [];
 
 function getCours () {
