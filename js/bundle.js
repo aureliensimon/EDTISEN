@@ -53,8 +53,10 @@ function loadColors () {
     learn.forEach(function(element){
         let modelsettingclone = modelsetting.cloneNode(true);
 
-        modelsettingclone.childNodes[1].childNodes[1].innerHTML=element;
+        modelsettingclone.id = element;
+        modelsettingclone.childNodes[1].childNodes[1].innerHTML = element;
         modelsettingclone.style.display = 'flex';
+        modelsettingclone.setAttribute('onclick', 'colorPicker(this.id)');
 
         contenu.appendChild(modelsettingclone);
     });
