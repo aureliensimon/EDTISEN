@@ -1,5 +1,5 @@
 let listeCours = {};
-let targetDate = 'Oct 14 2019';
+let targetDate = 'Jan 06 2020';
 
 function getCurrentDate () {
     let nDate = (new Date).toLocaleDateString('en-GB', { 
