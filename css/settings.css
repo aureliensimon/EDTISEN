@@ -55,7 +55,7 @@ body {
     padding: 2px;
     width: 50%;
 }
-#colorpoint {
+.colorpoint {
     width: 40px;
     height: 40px;
     margin-left: 35%;
@@ -71,7 +71,11 @@ body {
 }
 
 #matiere {
-    padding-top: 10px;
+    line-height: 40px;
+}
+.matiere {
+    padding: 10px 0px;
+    height: 40px;
 }
 
 #liste-matieres {
@@ -119,4 +123,12 @@ body {
     margin-bottom: 20px;
     width: 25vmin;
     height: 25vmin;
+}
+#matiere-name {
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    color: black;
+    font-weight: 700;
+    font-size: 5vmin;
 }

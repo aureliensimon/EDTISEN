@@ -32,25 +32,26 @@
         <div class="colorbutton" id="matiere">
             <span></span>
         </div>
-        <div  class="colorbutton" >
-            <div id="colorpoint"></div>
+        <div class="colorbutton">
+            <div class="colorpoint"></div>
         </div>
     </div>
 
     <div id="color-picker" class="colorp">
         <div class="colorp-content">
-            <span class="close" onclick="closeColorPicker()">&times;</span>
+            <span id="matiere-name"></span>
+            <span class="close" onclick="closeColorPicker();">&times;</span>
             <br>
             <div id="color-list">
-                <div class="color-item" style="background-color: #FF756D" onclick="selectColor(this)"></div>
-                <div class="color-item" style="background-color: #FFF49C" onclick="selectColor(this)"></div>
-                <div class="color-item" style="background-color: #77DD77" onclick="selectColor(this)"></div>
-                <div class="color-item" style="background-color: #7799CC" onclick="selectColor(this)"></div>
-                <div class="color-item" style="background-color: #F69CC4" onclick="selectColor(this)"></div>
-                <div class="color-item" style="background-color: #572D15" onclick="selectColor(this)"></div>
-                <div class="color-item" style="background-color: #DAE3D9" onclick="selectColor(this)"></div>
-                <div class="color-item" style="background-color: #B399D4" onclick="selectColor(this)"></div>
-                <div class="color-item" style="background-color: #E3AA25" onclick="selectColor(this)"></div>
+                <div class="color-item" style="background-color: #FF756D" onclick="selectColor(this); closeColorPicker();"></div>
+                <div class="color-item" style="background-color: #FFF49C" onclick="selectColor(this); closeColorPicker();"></div>
+                <div class="color-item" style="background-color: #77DD77" onclick="selectColor(this); closeColorPicker();"></div>
+                <div class="color-item" style="background-color: #7799CC" onclick="selectColor(this); closeColorPicker();"></div>
+                <div class="color-item" style="background-color: #F69CC4" onclick="selectColor(this); closeColorPicker();"></div>
+                <div class="color-item" style="background-color: #572D15" onclick="selectColor(this); closeColorPicker();"></div>
+                <div class="color-item" style="background-color: #DAE3D9" onclick="selectColor(this); closeColorPicker();"></div>
+                <div class="color-item" style="background-color: #B399D4" onclick="selectColor(this); closeColorPicker();"></div>
+                <div class="color-item" style="background-color: #E3AA25" onclick="selectColor(this); closeColorPicker();"></div>
             </div>
         </div>
     </div>

@@ -48,12 +48,15 @@ getCours();
 function loadColors () {
     let modelsetting = document.getElementById("couleurmatiere");
     let contenu = document.getElementById("liste-matieres");
+   
     let learn = getMatieres();
     
     learn.forEach(function(element){
         let modelsettingclone = modelsetting.cloneNode(true);
 
         modelsettingclone.id = element;
+        modelsettingclone.className = 'matiere';
+        modelsettingclone.childNodes[3].childNodes[1].id = element.replace(/\s/, '');
         modelsettingclone.childNodes[1].childNodes[1].innerHTML = element;
         modelsettingclone.style.display = 'flex';
         modelsettingclone.setAttribute('onclick', 'colorPicker(this.id)');
