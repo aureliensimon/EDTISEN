@@ -6,31 +6,34 @@ body {
 }
 
 #date-time {
+    font-family: 'Lato', sans-serif;
     margin-top: 20%;
 }
 #time {
-    font-family: 'Lato';
-    font-size: 5em;
+    font-size: 20vmin;
+    font-weight: 700;
 }
 #date {
     color: #959595;
-    font-size: 1.8em;
+    font-size: 8vmin;
 }
 
 #buttons {
-    font-size: 1.3em;
+    font-size: 5vmin;
     font-weight: 900;
     margin-top: 120px;
 }
 .button-redirection {
+    font-size: 5vmin;
+    font-family: 'Nunito', sans-serif;
     display: inline-block;
     margin: auto;
     text-align: left;
     padding-left: 50px;
     vertical-align: middle;
-    line-height: 90px;
+    line-height: 14vh;
     width: 70%;
-    height: 90px;
+    height: 14vh;
     margin-top: 15%;
     border-radius: 77px 77px 77px 77px;
 }
@@ -47,8 +50,11 @@ body {
 }
 .arrow-img {
     float: right;
-    width: 6vh;
+    /*width: 6vh;
     margin-top: 2vh;
-    margin-right: 2vw;
+    margin-right: 2vw;*/
+    width: 10vmin;
+    margin-top: 4vh;
+    margin-right: 15px;
     transform: rotate(-90deg);
 }
