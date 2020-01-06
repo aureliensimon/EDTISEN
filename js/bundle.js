@@ -12,7 +12,7 @@
 
 var ical = require('ical');
 var login = 'asimon23';
-var url = 'https://cors-anywhere.herokuapp.com/' + 'http://web.isen-ouest.fr/EDT/' + login + '.ics';
+var url = 'https://xopenproxy.herokuapp.com/' + 'http://web.isen-ouest.fr/EDT/' + login + '.ics';
 var matiereUniques = [];
 
 function getCours () {
