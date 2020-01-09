@@ -61,7 +61,6 @@ body {
     margin-left: 35%;
     border-radius: 50%;
     border:solid white;
-    background-color: aqua;
 }
 #couleurmatiere {
     display: flex;

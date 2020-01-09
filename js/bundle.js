@@ -3,13 +3,6 @@
     browserify js/parser.js -o js/bundle.js
 */
 
-/*
-    IDEE :
-    - REMPLIR UN TABLEAU EN VARIABLE GLOBALE DANS UN AUTRE SCRIPT 
-    (cf ligne 37) POUR ENSUITE L'UTILISER DANS LES FONCTIONS
-    (POUR PLUS TARD TROP DE TRUCS A CHANGER SINON) 
-*/
-
 var ical = require('ical');
 var login = 'asimon23';
 var url = 'https://xopenproxy.herokuapp.com/' + 'http://web.isen-ouest.fr/EDT/' + login + '.ics';
@@ -30,6 +23,7 @@ function getCours () {
             }
         }
         matiereUniques = Array.from(new Set(allMatieres));
+        storeMatieres(matiereUniques);
 
         let CurrentPage = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
         switch(CurrentPage) {
@@ -56,6 +50,7 @@ function loadColors () {
 
         modelsettingclone.id = element;
         modelsettingclone.className = 'matiere';
+        modelsettingclone.childNodes[3].childNodes[1].style.backgroundColor = localStorage.getItem(element.replace(/\s/, ''));
         modelsettingclone.childNodes[3].childNodes[1].id = element.replace(/\s/, '');
         modelsettingclone.childNodes[1].childNodes[1].innerHTML = element;
         modelsettingclone.style.display = 'flex';
@@ -113,6 +108,14 @@ function splitMaker(activity, start, end) {
     return payloadJSON;
 }
 
+function storeMatieres (list) {
+    list.forEach(matiere => {
+        matiere = matiere.replace(/\s/, '');
+        if (localStorage.getItem(matiere) === null) {
+            localStorage.setItem(matiere, 'rgb(255, 255, 255)');
+        }
+    });
+}
 },{"ical":96}],2:[function(require,module,exports){
 'use strict';
 

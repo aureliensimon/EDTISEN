@@ -13,4 +13,5 @@ function closeColorPicker () {
 function selectColor (div) {
     let matiere = document.getElementById('color-picker').getAttribute('matiere');
     document.getElementById(matiere).style.backgroundColor = div.style.backgroundColor;
+    localStorage.setItem(matiere, div.style.backgroundColor);
 }

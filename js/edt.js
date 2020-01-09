@@ -111,6 +111,7 @@ function loadDayItems (date) {
             let modelClone = model.cloneNode(true);
             
             modelClone.childNodes[1].innerHTML = element.matiere2;
+            modelClone.childNodes[1].style.borderLeft = '3.5px solid ' + localStorage.getItem(element.matiere.replace(/\s/, ''));
             modelClone.childNodes[5].innerHTML = element.prof;
             modelClone.childNodes[7].firstElementChild.innerText = element.dateDebut;
             modelClone.childNodes[7].lastElementChild.innerText = element.dateFin;
