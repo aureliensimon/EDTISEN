@@ -128,6 +128,18 @@ function loadDayItems (date) {
     }
 }
 
+function loadMonthItems () {
+    let contenu = document.getElementById('list-item');
+
+    while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
+
+    node = document.createElement("P");
+    node.id = 'no-lesson-text';
+    textnode = document.createTextNode("Non Disponible dans la version v0.1");
+    node.appendChild(textnode);
+    contenu.appendChild(node);
+}
+
 function fillListeCours (tab) {
     listeCours = tab;
 }
