@@ -41,7 +41,7 @@ getCours();
 function loadColors () {
     let modelsetting = document.getElementById("couleurmatiere");
     let contenu = document.getElementById("liste-matieres");
-   
+    
     let learn = getMatieres();
     
     learn.forEach(function(element){
