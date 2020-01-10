@@ -17,7 +17,7 @@ function getCours () {
                 if (data[i].type == 'VEVENT') {
                     var cours = splitMaker("" + ev.description, "" + ev.start, "" + ev.end);
                     tab.push(cours);
-                    allMatieres.push(cours.matiere);
+                    allMatieres.push(cours.matiere2);
                 }
             }
         }
