@@ -101,12 +101,14 @@ function loadDayItems (date) {
     listeCours.forEach(function(element){
         if(element.date == date){
             let modelClone = model.cloneNode(true);
-            modelClone.childNodes[1].innerHTML = element.matiere2;
-            modelClone.childNodes[1].style.borderLeft = '3.5px solid ' + localStorage.getItem(element.matiere2.replace(/\s/, ''));
-            modelClone.childNodes[5].innerHTML = element.prof;
-            modelClone.childNodes[7].firstElementChild.innerText = element.dateDebut;
-            modelClone.childNodes[7].lastElementChild.innerText = element.dateFin;
-            modelClone.childNodes[9].innerHTML = element.lieu;
+
+            modelClone.getElementsByClassName('lesson-Name')[0].innerHTML = element.matiere2;
+            modelClone.getElementsByClassName('lesson-Name')[0].style.borderLeft = '3.5px solid ' + localStorage.getItem(element.matiere2.replace(/\s/, ''));
+            modelClone.getElementsByClassName('lesson-Professor')[0].innerHTML = element.prof;
+            modelClone.getElementsByClassName('lesson-Date-Start')[0].innerText = element.dateDebut;
+            modelClone.getElementsByClassName('lesson-Date-End')[0].innerText = element.dateFin;
+            modelClone.getElementsByClassName('lesson-Location-Number')[0].innerText = element.lieu.replace(/\s/, '');
+            modelClone.getElementsByClassName('lesson-Location-Number')[0].style.color = localStorage.getItem(element.matiere2.replace(/\s/, ''));
             modelClone.style.display = 'block';
 
             contenu.appendChild(modelClone);

@@ -246,14 +246,14 @@ body {
 }
 .lesson-Name {
     padding-left: 3vmax;
-    font-size: 6vmin;
+    font-size: 5vmin;
     font-weight: 700;
     color: white;
 }
 .lesson-Professor {
     opacity: 1;
     padding-left: 3.5vmax;
-    font-size: 4vmin;
+    font-size: 3vmin;
 }
 .lesson-Date {
     font-weight: 700;
