@@ -4,7 +4,7 @@
 */
 
 var ical = require('ical');
-var login = 'asimon23';
+var login = localStorage.getItem('login');
 var url = 'https://xopenproxy.herokuapp.com/' + 'http://web.isen-ouest.fr/EDT/' + login + '.ics';
 var matiereUniques = [];
 
@@ -42,7 +42,7 @@ getCours();
 function loadColors () {
     let modelsetting = document.getElementById("couleurmatiere");
     let contenu = document.getElementById("liste-matieres");
-   
+    
     let learn = getMatieres();
     
     learn.forEach(function(element){

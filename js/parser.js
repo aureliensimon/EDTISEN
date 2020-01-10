@@ -3,7 +3,7 @@
 */
 
 var ical = require('ical');
-var login = 'asimon23';
+var login = localStorage.getItem('login');
 var url = 'https://xopenproxy.herokuapp.com/' + 'http://web.isen-ouest.fr/EDT/' + login + '.ics';
 var matiereUniques = [];
 
