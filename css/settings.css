@@ -87,7 +87,7 @@ body {
     display: none;
     position: fixed;
     z-index: 1;
-    padding-top: 100px;
+    padding-top: 50px;
     left: 0;
     top: 0;
     width: 100%;
@@ -122,8 +122,8 @@ body {
 .color-item {
     border-radius: 50%;
     margin-bottom: 20px;
-    width: 25vmin;
-    height: 25vmin;
+    width: 22vmin;
+    height: 22vmin;
 }
 #matiere-name {
     float: left;
