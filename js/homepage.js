@@ -21,8 +21,8 @@ function getTime () {
     let nDate = (new Date).toLocaleDateString('fr-FR', { 
         weekday: 'short',
         month: 'short',
-        day: 'numeric' }
-    );
+        day: '2-digit'
+    });
     
     let date = nDate.slice(0,3)  + ', ' + nDate.slice(5,7) + ' ' + nDate.slice(8,11);
     let time = (new Date).toString().substr(16,5);

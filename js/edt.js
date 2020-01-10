@@ -3,10 +3,10 @@ let targetDate = 'Jan 06 2020';
 
 function getCurrentDate () {
     let nDate = (new Date).toLocaleDateString('en-GB', { 
-        day: 'numeric',
+        day: '2-digit',
         month: 'short',
-        year: 'numeric' }
-    );
+        year: 'numeric'
+    });
     return(formatDate(nDate));
 }
 
@@ -14,10 +14,10 @@ function incrDate(pDate, number) {
     let date = new Date(pDate);
     date.setDate(date.getDate() + number);
     date = date.toLocaleDateString('en-GB', { 
-        day: 'numeric',
+        day: '2-digit',
         month: 'short',
-        year: 'numeric' }
-    );
+        year: 'numeric'
+    });
     return(formatDate(date));
 }
 
@@ -25,8 +25,8 @@ function getTime () {
     let nDate = new Date(targetDate).toLocaleDateString('fr-FR', { 
         weekday: 'short',
         month: 'short',
-        day: 'numeric' }
-    );
+        day: '2-digit'
+    });
     
     let date = nDate.slice(0,3)  + ', ' + nDate.slice(5,7) + ' ' + nDate.slice(7,11);
 
@@ -39,22 +39,14 @@ function getDayTag (date) {
 }
 
 function formatDate (date) {
-    let i = 0;
-    let zero = ' ';
-    
-    if(parseInt(date.slice(0,2)) < 10) {
-        i = 1;
-        zero = ' 0';
-    }
-
     return(
-        date.slice(3-i,6-i).charAt(0).toUpperCase()
-        + date.slice(3-i,6-i).charAt(1).normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-        + date.slice(4-i,6-i).slice(1)
-        + zero
-        + date.slice(0,2-i)
+        date.slice(3,6).charAt(0).toUpperCase()
+        + date.slice(3,6).charAt(1).normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        + date.slice(4,6).slice(1)
         + ' '
-        + date.slice(7-i,11-i)
+        + date.slice(0,2)
+        + ' '
+        + date.slice(7,11)
     );
 }
 
