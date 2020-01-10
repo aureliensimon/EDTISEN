@@ -1,9 +1,9 @@
 * {
     margin: 0;
+    font-family: 'Nunito', sans-serif !important;
 }
 body {
     background-color: #292C42;
-    font-family: 'Nunito', sans-serif;
     color: white;
 }
 
