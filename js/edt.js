@@ -73,8 +73,8 @@ function changeCSS (div) {
 }
 
 function loadWeekItems () {
-    let dayTags = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
-    let dayTagsEN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    let dayTags = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
+    let dayTagsEN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
     let targetDay = getDayTag(targetDate);
     
     let model = document.getElementById('edt-item-week');
@@ -82,7 +82,7 @@ function loadWeekItems () {
 
     while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 5; i++) {
         let modelClone = model.cloneNode(true);
 
         modelClone.childNodes[1].innerHTML = dayTags[i];
