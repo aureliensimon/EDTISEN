@@ -56,8 +56,8 @@ body {
     width: 50%;
 }
 .colorpoint {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     margin-left: 35%;
     border-radius: 50%;
     border:solid white;
@@ -68,13 +68,15 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
-#matiere {
-    line-height: 40px;
-}
 .matiere {
-    padding: 10px 0px;
-    height: 40px;
+    font-size: 3.5vmin;
+    height: 50px;
+    margin-bottom: 30px;
+}
+.matiere span {
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
 }
 
 #liste-matieres {
