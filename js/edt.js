@@ -77,7 +77,7 @@ function loadWeekItems () {
     for (let i = 0; i < 5; i++) {
         let modelClone = model.cloneNode(true);
 
-        modelClone.childNodes[1].innerHTML = dayTags[i];
+        modelClone.getElementsByClassName('daytag').innerHTML = dayTags[i];
         modelClone.style.display = 'block';
         if (!(dayTagsEN.indexOf(targetDay) - i)) {
             modelClone.style.border = '1px solid white';

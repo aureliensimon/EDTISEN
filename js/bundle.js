@@ -50,9 +50,10 @@ function loadColors () {
 
         modelsettingclone.id = element;
         modelsettingclone.className = 'matiere';
-        modelsettingclone.childNodes[3].childNodes[1].style.backgroundColor = localStorage.getItem(element.replace(/\s/, ''));
-        modelsettingclone.childNodes[3].childNodes[1].id = element.replace(/\s/, '');
-        modelsettingclone.childNodes[1].childNodes[1].innerHTML = element;
+        
+        modelsettingclone.getElementsByClassName('colorpoint')[0].style.backgroundColor = localStorage.getItem(element.replace(/\s/, ''));
+        modelsettingclone.getElementsByClassName('colorpoint')[0].id = element.replace(/\s/, '');
+        modelsettingclone.getElementsByClassName('matiere-nom')[0].innerHTML = element;
         modelsettingclone.style.display = 'flex';
         modelsettingclone.setAttribute('onclick', 'colorPicker(this.id)');
 
