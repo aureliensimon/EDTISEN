@@ -259,16 +259,17 @@ body {
     font-weight: 700;
     font-size: 4.5vmin;
     margin-top: 20px;
+    margin-right: 7vmin;
     padding-left: 3.5vmax;
+    display: inline-table;
 }
 .lesson-Location {
-    float: right;
+    display: inline-table;
+    width: 40%;
+    text-align: right;
     margin-top: -30px;
     margin-right: 20px;
     font-size: 5vmin;
-}
-.lesson-Location-Number {
-    color: #0478EB;
 }
 
 #nothingfound {
