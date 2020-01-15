@@ -45,6 +45,8 @@ lien direct : [activer votre agenda](https://web.isen-ouest.fr/uPortal/p/abonnem
 # Téléchargements
 * APK
 
+  <img src=https://build.phonegap.com/apps/3719773/badge/2229398496/android.svg />
+
   apk
 
 * PWA
