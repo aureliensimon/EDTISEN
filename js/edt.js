@@ -1,5 +1,6 @@
 let listeCours = {};
 let targetDate = getCurrentDate();
+let mondayDate, relativeMonday;
 
 function getCurrentDate () {
     let nDate = (new Date).toLocaleDateString('en-GB', { 
@@ -64,10 +65,10 @@ function changeCSS (div) {
     div.style.borderBottom = '3px solid #0478EB';
 }
 
-function loadWeekItems () {
+function loadWeekItems (targetWeek) {
     let dayTags = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
     let dayTagsEN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
-    let targetDay = getDayTag(targetDate);
+    let targetDay = targetWeek;
     
     let model = document.getElementById('edt-item-week');
     let contenu = document.getElementById('list-item');
@@ -83,14 +84,21 @@ function loadWeekItems () {
             modelClone.style.border = '1px solid white';
         }
         modelClone.onclick = function () {
-            targetDate = incrDate(targetDate, -(dayTagsEN.indexOf(targetDay) - i));
-            loadDayItems(targetDate);
+            targetDate = incrDate(targetDay, -(dayTagsEN.indexOf(targetDay) - i + 1));
+            loadDayItems(incrDate(targetDay, -(dayTagsEN.indexOf(targetDay) - i + 1)));
             changeCSS(document.getElementById('daily'));
             getTime();
         };
         contenu.appendChild(modelClone);
     }
 }
+
+function getMondayDate () {
+    let dayTagsEN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+    mondayDate = incrDate(targetDate, -(dayTagsEN.indexOf(getDayTag(targetDate))));
+    relativeMonday = mondayDate;
+}
+getMondayDate();
 
 function loadDayItems (date) {
     let model = document.getElementById('edt-item-day');
@@ -131,15 +139,30 @@ function loadDayItems (date) {
 }
 
 function loadMonthItems () {
+    let model = document.getElementById('edt-item-week');
     let contenu = document.getElementById('list-item');
+    let nextMonday = mondayDate;
 
     while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
+    
+    for (let i = 0; i < 4; i++) {
+        nextMonday = incrDate(nextMonday, 6);
+        let modelClone = model.cloneNode(true);
 
-    node = document.createElement("P");
-    node.id = 'no-lesson-text';
-    textnode = document.createTextNode("Non Disponible dans la version v0.1");
-    node.appendChild(textnode);
-    contenu.appendChild(node);
+        modelClone.style.display = 'block';
+        modelClone.getElementsByClassName('daytag')[0].innerHTML = 'du ' + incrDate(nextMonday, -6).slice(4,6) + ' au ' + nextMonday.slice(4,6);
+        nextMonday = incrDate(nextMonday, 1);
+
+        modelClone.onclick = function () {
+            targetWeek = incrDate(mondayDate, i * 7);
+            relativeMonday = targetWeek;
+            loadWeekItems(targetWeek);
+            changeCSS(document.getElementById('weekly'));
+            getTime();
+        };
+
+        contenu.appendChild(modelClone);
+    }
 }
 
 function fillListeCours (tab) {
