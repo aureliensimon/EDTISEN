@@ -11,6 +11,9 @@ function getCours () {
     let tab = [];
     let allMatieres = [];
     ical.fromURL(url, {}, function (err, data) {
+        if (err != undefined) {
+            alert(err);
+        }
         for (var i in data) {
             if (data.hasOwnProperty(i)) {
                 var ev = data[i];
