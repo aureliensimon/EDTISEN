@@ -5,7 +5,7 @@ sans passer par l'ENT.
 
 Ce n'est pas une application officielle, EDTISEN est une application indépendante, gratuite et open-source.
 
-<img align="right" width="500" height="500" src="img/screen-home.png">
+<img align="right" width="500" height="500" src="www/img/screen-home.png">
 <br><br><br>
 Il est possible d'obtenir EDTISEN de deux manières différentes :
 
@@ -22,7 +22,7 @@ Il est possible d'obtenir EDTISEN de deux manières différentes :
   La version web est disponible sur ce site : https://edt.tools
 <br><br><br><br><br><br><br><br>
 
-<img align="left" width="500" height="500" src="img/screen-edt.png">
+<img align="left" width="500" height="500" src="www/img/screen-edt.png">
 <br>
 L'interface d'EDTISEN est sobre et moderne et ne propose par un thème lumineux de base
 <br>
@@ -47,7 +47,7 @@ lien direct : [activer votre agenda](https://web.isen-ouest.fr/uPortal/p/abonnem
 
   <img src=https://build.phonegap.com/apps/3719773/badge/2229398496/android.svg />
   
-  L'apk est disponible sur ce repository github : [lien du repository](https://github.com/aureliensimon/EDTISEN-apk)
+  [EDTISEN sur le Play Store](https://play.google.com/store/apps/details?id=com.phonegap.edtisen)
 
 * PWA
 
