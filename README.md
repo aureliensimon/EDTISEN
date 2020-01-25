@@ -5,7 +5,7 @@ sans passer par l'ENT.
 
 Ce n'est pas une application officielle, EDTISEN est une application indépendante, gratuite et open-source.
 
-<img align="right" width="500" height="500" src="www/img/screen-home.png">
+<img align="right" width="500" height="500" src="img/screen-home.png">
 <br><br><br>
 Il est possible d'obtenir EDTISEN de deux manières différentes :
 
@@ -22,7 +22,7 @@ Il est possible d'obtenir EDTISEN de deux manières différentes :
   La version web est disponible sur ce site : https://edt.tools
 <br><br><br><br><br><br><br><br>
 
-<img align="left" width="500" height="500" src="www/img/screen-edt.png">
+<img align="left" width="500" height="500" src="img/screen-edt.png">
 <br>
 L'interface d'EDTISEN est sobre et moderne et ne propose par un thème lumineux de base
 <br>
