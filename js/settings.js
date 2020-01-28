@@ -16,6 +16,10 @@ function selectColor (div) {
     localStorage.setItem(matiere, div.style.backgroundColor);
 }
 
+function putPlaceholder (div) {
+    div.value = localStorage.getItem('login');
+}
+
 function changeLogin (l) {
     let login = l.value;
     if (checkLogin(login)) {
@@ -24,7 +28,7 @@ function changeLogin (l) {
 }
 
 function checkLogin (login) {
-    return(/^[a-z]{6}[1-2][0-9]$/.test(login));
+    return(/^[a-z]{3,}[0-9]{2,}$/.test(login));
 }
 
 function loadLogin () {
