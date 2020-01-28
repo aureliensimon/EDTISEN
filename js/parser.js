@@ -84,25 +84,23 @@ function createJson(array) {
         date: array[0],
         dateDebut: array[1],
         dateFin: array[2],
-        matiere: array[3],
-        matiere2: array[4],
-        prof: array[5],
-        lieu: array[6],
-        notes: array[7]
-    });
+        matiere: array[4],
+        matiere2: array[5],
+        prof: array[6],
+        lieu: array[7],
+        notes: array[8],
+        typeCours: array[3]
+    }); 
 }
 
 /*  Sépare toutes les différentes partie d'un cours */
 function splitMaker(activity, start, end) {
     var payload = [];
-    
     var array = activity.split('\n');
     payload.push(getFullDate(start));
     payload.push(getDate(start), getDate(end));
     
     for (var i = 0; i < array.length; i++) {
-        if (!i || i == array.length)
-            continue;
         payload.push(array[i].split('-')[1]);
     }
     
