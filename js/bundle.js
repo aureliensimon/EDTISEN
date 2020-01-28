@@ -36123,6 +36123,9 @@ function getCours () {
                 }
             }
         }
+        if(!tab.length) {
+            alert('Il semble que votre login soit incorrect.\nSoit votre login (' + localStorage.getItem('login') + ') est incorrect, soit vous n\'avez pas activé votre agenda.\nPour l\'activer il faudra vous rendre sur l\'ENT, dans l\'onglet Mon compte puis Abonnement agenda et enfin cliquer sur activer mon abonnement');
+        }
         matiereUniques = Array.from(new Set(allMatieres));
         storeMatieres(matiereUniques);
 
