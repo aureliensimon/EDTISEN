@@ -36123,14 +36123,17 @@ function getCours () {
                 }
             }
         }
-        if(!tab.length) {
+        let currentPage = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+
+        if(!tab.length && currentPage == 'edt.html') {
             alert('Il semble que votre login soit incorrect.\nSoit votre login (' + localStorage.getItem('login') + ') est incorrect, soit vous n\'avez pas activé votre agenda.\nPour l\'activer il faudra vous rendre sur l\'ENT, dans l\'onglet Mon compte puis Abonnement agenda et enfin cliquer sur activer mon abonnement');
+            return -1;
         }
         matiereUniques = Array.from(new Set(allMatieres));
         storeMatieres(matiereUniques);
 
-        let CurrentPage = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-        switch(CurrentPage) {
+        
+        switch(currentPage) {
             case 'edt.html':
                 fillListeCours(tab);
                 loadDayItems(targetDate);
