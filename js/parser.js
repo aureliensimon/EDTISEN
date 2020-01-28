@@ -101,7 +101,7 @@ function splitMaker(activity, start, end) {
     payload.push(getDate(start), getDate(end));
     
     for (var i = 0; i < array.length; i++) {
-        payload.push(array[i].split('-')[1]);
+        payload.push(array[i].split(/-(.+)/)[1]);
     }
     
     var payloadJSON = createJson(payload);
