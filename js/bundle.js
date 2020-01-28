@@ -36183,13 +36183,13 @@ function createJson(array) {
         date: array[0],
         dateDebut: array[1],
         dateFin: array[2],
+        type: array[3],
         matiere: array[4],
         matiere2: array[5],
         prof: array[6],
         lieu: array[7],
-        notes: array[8],
-        typeCours: array[3]
-    }); 
+        notes: array[8]
+    });
 }
 
 /*  Sépare toutes les différentes partie d'un cours */
