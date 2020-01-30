@@ -103,6 +103,13 @@ body {
     border: 1px solid #888;
     width: 80%;
 }
+#color-list {
+    text-align: center;
+}
+#color {
+    border: 2px solid #292C42;
+    padding: 10px 25px;
+}
 .close {
     color: #aaaaaa;
     float: right;
@@ -117,7 +124,6 @@ body {
 }
 #color-list {
     margin-top: 50px;
-    column-count: 3;
 }
 .color-item {
     border-radius: 50%;

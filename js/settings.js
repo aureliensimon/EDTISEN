@@ -1,4 +1,5 @@
 function colorPicker (id) {
+    new KellyColorPicker({place : 'picker', input : 'color', size : 200});
     let colorp = document.getElementById('color-picker');
     document.getElementById('matiere-name').innerText = id;
     colorp.style.display = 'block';
@@ -14,6 +15,7 @@ function selectColor (div) {
     let matiere = document.getElementById('color-picker').getAttribute('matiere');
     document.getElementById(matiere).style.backgroundColor = div.style.backgroundColor;
     localStorage.setItem(matiere, div.style.backgroundColor);
+    closeColorPicker();
 }
 
 function putPlaceholder (div) {

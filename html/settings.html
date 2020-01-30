@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Settings</title>
-    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
+    <meta http-equiv="Content-Security-Policy" content="default-src *;img-src * 'self' data: https: http:;script-src 'self' 'unsafe-inline' 'unsafe-eval' *;style-src  'self' 'unsafe-inline' *">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700,900&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="../css/settings.css" />
 </head>
@@ -45,27 +45,14 @@
             <span class="close" onclick="closeColorPicker();">&times;</span>
             <br>
             <div id="color-list">
-                <div class="color-item" style="background-color: #89defa" onclick="selectColor(this); closeColorPicker();"></div>
-                <div class="color-item" style="background-color: #db3056" onclick="selectColor(this); closeColorPicker();"></div>
-                <div class="color-item" style="background-color: #2a8849" onclick="selectColor(this); closeColorPicker();"></div> 
-                <div class="color-item" style="background-color: #e9d700" onclick="selectColor(this); closeColorPicker();"></div>
-                <div class="color-item" style="background-color: #be29ec" onclick="selectColor(this); closeColorPicker();"></div>
-
-                <div class="color-item" style="background-color: #b3e1ee" onclick="selectColor(this); closeColorPicker();"></div>
-                <div class="color-item" style="background-color: #ff6464" onclick="selectColor(this); closeColorPicker();"></div>
-                <div class="color-item" style="background-color: #7bb38d" onclick="selectColor(this); closeColorPicker();"></div>
-                <div class="color-item" style="background-color: #f8ed62" onclick="selectColor(this); closeColorPicker();"></div>
-                <div class="color-item" style="background-color: #d896ff" onclick="selectColor(this); closeColorPicker();"></div>
-                
-                <div class="color-item" style="background-color: #e6eff8" onclick="selectColor(this); closeColorPicker();"></div>
-                <div class="color-item" style="background-color: #ffbaba" onclick="selectColor(this); closeColorPicker();"></div>
-                <div class="color-item" style="background-color: #badabf" onclick="selectColor(this); closeColorPicker();"></div>
-                <div class="color-item" style="background-color: #fff9ae" onclick="selectColor(this); closeColorPicker();"></div>
-                <div class="color-item" style="background-color: #efbbff" onclick="selectColor(this); closeColorPicker();"></div>
+                <canvas id="picker"></canvas>
+                <br>
+                <button id="color" onclick="selectColor(this)">Sauvegarder</button>
             </div>
         </div>
     </div>
 
+    <script type="text/javascript" src="../js/colorpicker.min.js"></script>
     <script type="text/javascript" src="../js/settings.js"></script>
     <script type="text/javascript" src="../js/bundle.js"></script>
 </body>
