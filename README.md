@@ -51,7 +51,7 @@ lien direct : [activer votre agenda](https://web.isen-ouest.fr/uPortal/p/abonnem
 
 * PWA
 
-  Pour installer EDTISEN depuis le navigateur de votre mobile, il faut se rendre sur le site [https://edtisen.tools](https://edtisen.tools), puis cliquer sur ***Ajouter à l'écran d'acceuil***
+  Pour installer EDTISEN depuis le navigateur de votre mobile, il faut se rendre sur le site https://www.edtisen.xyz, puis cliquer sur ***Ajouter à l'écran d'acceuil***
 
 # Suggestions
 Si vous avez des suggestions, n'hésiter pas à nous contacter afin de nous soumettre votre idée.
