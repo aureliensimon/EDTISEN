@@ -113,7 +113,7 @@ function loadDayItems (date) {
         if(element.date == date){
             let modelClone = model.cloneNode(true);
 
-            modelClone.getElementsByClassName('lesson-Name')[0].innerHTML = element.matiere2;
+            modelClone.getElementsByClassName('lesson-Name')[0].innerHTML = (element.matiere2 === ' Evénement sans titre') ? element.matiere : element.matiere2;
             modelClone.getElementsByClassName('lesson-Name')[0].style.borderLeft = '3.5px solid ' + localStorage.getItem(element.matiere2.replace(/\s/, ''));
             modelClone.getElementsByClassName('lesson-Professor')[0].innerHTML = element.prof;
             modelClone.getElementsByClassName('lesson-Date-Start')[0].innerText = element.dateDebut;
