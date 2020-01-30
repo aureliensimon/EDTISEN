@@ -80,9 +80,12 @@ function loadWeekItems (targetWeek) {
 
         modelClone.getElementsByClassName('daytag')[0].innerHTML = dayTags[i];
         modelClone.style.display = 'block';
-        if (!(dayTagsEN.indexOf(targetDay) - i)) {
+        
+        // if day is selected day, set border
+        if (!(dayTagsEN.indexOf(getDayTag(targetDate)) - i)) {
             modelClone.style.border = '1px solid white';
         }
+
         modelClone.onclick = function () {
             targetDate = incrDate(targetDay, -(dayTagsEN.indexOf(targetDay) - i + 1));
             loadDayItems(incrDate(targetDay, -(dayTagsEN.indexOf(targetDay) - i + 1)));
