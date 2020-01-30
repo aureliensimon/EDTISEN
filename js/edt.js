@@ -66,8 +66,8 @@ function changeCSS (div) {
 }
 
 function loadWeekItems (targetWeek) {
-    let dayTags = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
-    let dayTagsEN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+    let dayTags = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+    let dayTagsEN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     let targetDay = targetWeek;
     
     let model = document.getElementById('edt-item-week');
@@ -97,7 +97,7 @@ function loadWeekItems (targetWeek) {
 }
 
 function getMondayDate () {
-    let dayTagsEN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+    let dayTagsEN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     mondayDate = incrDate(targetDate, -(dayTagsEN.indexOf(getDayTag(targetDate))));
     relativeMonday = mondayDate;
 }
