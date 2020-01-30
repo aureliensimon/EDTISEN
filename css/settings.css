@@ -1,6 +1,6 @@
 body {
     background-color: #292C42;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito', sans-serif !important;
     color: white;
 }
 
