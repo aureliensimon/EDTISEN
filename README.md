@@ -19,7 +19,7 @@ Il est possible d'obtenir EDTISEN de deux manières différentes :
   
 * PWA
 
-  La version web est disponible sur ce site : https://edt.tools
+  La version web est disponible sur ce site : https://www.edtisen.xyz
 <br><br><br><br><br><br><br><br>
 
 <img align="left" width="500" height="500" src="img/screen-edt.png">
