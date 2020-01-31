@@ -7,6 +7,9 @@ var login = localStorage.getItem('login');
 var url = 'https://xopenproxy.herokuapp.com/' + 'http://web.isen-ouest.fr/EDT/' + login + '.ics';
 var matiereUniques = [];
 
+/**
+ * Parse ics file.
+ */
 function getCours () {
     let tab = [];
     let allMatieres = [];
@@ -47,6 +50,9 @@ function getCours () {
 }
 getCours();
 
+/**
+ * Load color button in settings.html.
+ */
 function loadColors () {
     let modelsetting = document.getElementById("couleurmatiere");
     let contenu = document.getElementById("liste-matieres");
@@ -69,22 +75,38 @@ function loadColors () {
     });
 }
 
-/*  Liste de toutes les catégories de matières  */ 
+/**
+ * Liste de toutes les catégories de matières
+ * @param {date} date date to extract.
+ * @return {string} lesson's day.
+ */
 function getMatieres(){
     return matiereUniques;
 }
 
-/*  La date du jour    */
+/**
+ * La date du jour
+ * @param {date} date date to extract.
+ * @return {string} lesson's day.
+ */
 function getFullDate(date){
     return date.substr(4,11);
 }
 
-/*  L'heure de la matière   */
+/**
+ * Avoir l'heure de la matière
+ * @param {date} date date to extract.
+ * @return {string} lesson's hour.
+ */
 function getDate(date) {
     return date.substr(16, 5);
 }
 
-/*  Créer le JSON en partant du ical    */
+/**
+ * Créer le JSON en fonction du ical
+ * @param {array} array lesson.
+ * @return {JSON} structured lesson.
+ */
 function createJson(array) {
     return ({
         date: array[0],
@@ -99,7 +121,13 @@ function createJson(array) {
     });
 }
 
-/*  Sépare toutes les différentes partie d'un cours */
+/**
+ * Sépare toutes les différentes partie d'un cours
+ * @param {string} activity a lesson (full informations).
+ * @param {date} start start date of the activity.
+ * @param {date} end end date of the activity.
+ * @return {array} JSONify array of all lesson.
+ */
 function splitMaker(activity, start, end) {
     var payload = [];
     var array = activity.split('\n');
@@ -115,6 +143,10 @@ function splitMaker(activity, start, end) {
     return payloadJSON;
 }
 
+/**
+ * Add / sub a number of days from a date.
+ * @param {array} list all uniques fields.
+ */
 function storeMatieres (list) {
     list.forEach(matiere => {
         matiere = matiere.replace(/\s/, '');

@@ -2,6 +2,10 @@ let listeCours = {};
 let targetDate = getCurrentDate();
 let mondayDate, relativeMonday;
 
+/**
+ * get the current date
+ * @return {date} current date (format : MMM DD YYYY).
+ */
 function getCurrentDate () {
     let nDate = (new Date).toLocaleDateString('en-GB', { 
         day: '2-digit',
@@ -11,6 +15,12 @@ function getCurrentDate () {
     return(formatDate(nDate));
 }
 
+/**
+ * Add / sub a number of days from a date.
+ * @param {date} pdate the initial date.
+ * @param {number} number number of day to increase / decrease.
+ * @return {date} new date (format : MMM DD YYYY).
+ */
 function incrDate(pDate, number) {
     let date = new Date(pDate);
     date.setDate(date.getDate() + number);
@@ -22,6 +32,9 @@ function incrDate(pDate, number) {
     return(formatDate(date));
 }
 
+/**
+ * Add the current date to HTML.
+ */
 function getTime () {
     let nDate = new Date(targetDate).toLocaleDateString('fr-FR', { 
         weekday: 'short',
@@ -30,15 +43,24 @@ function getTime () {
     });
     
     let date = nDate.slice(0,3)  + ', ' + nDate.slice(5,7) + ' ' + nDate.slice(7,11);
-
     document.getElementById('date').innerHTML = date;
 }
 
+/**
+ * Give the day tag from a date (format : Ddd).
+ * @param {date} date The initial date.
+ * @return {string} day tag (Mon, Thu, ..., Sun).
+ */
 function getDayTag (date) {
     let cDate = new Date(date);
     return (cDate.toString().slice(0,3));
 }
 
+/**
+ * format a date.
+ * @param {date} date The date to format.
+ * @return {date} formated date (format : MMM DD YYYY).
+ */
 function formatDate (date) {
     return(
         date.slice(3,6).charAt(0).toUpperCase()
@@ -51,6 +73,10 @@ function formatDate (date) {
     );
 }
 
+/**
+ * Add a bottom border to selected item in menu.
+ * @param {HTML} div The div the user clicked.
+ */
 function changeCSS (div) {
     let alldiv = Array.from(div.parentNode.children);
 
@@ -65,6 +91,10 @@ function changeCSS (div) {
     div.style.borderBottom = '3px solid #0478EB';
 }
 
+/**
+ * Load all week tags.
+ * @param {date} targetWeek The week selected.
+ */
 function loadWeekItems (targetWeek) {
     let dayTags = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
     let dayTagsEN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -96,6 +126,9 @@ function loadWeekItems (targetWeek) {
     }
 }
 
+/**
+ * Get monday date from the targetDate's week.
+ */
 function getMondayDate () {
     let dayTagsEN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     mondayDate = incrDate(targetDate, -(dayTagsEN.indexOf(getDayTag(targetDate))));
@@ -103,6 +136,10 @@ function getMondayDate () {
 }
 getMondayDate();
 
+/**
+ * Load all day items.
+ * @param {date} date The day selected.
+ */
 function loadDayItems (date) {
     let model = document.getElementById('edt-item-day');
     let contenu = document.getElementById('list-item');
@@ -141,6 +178,9 @@ function loadDayItems (date) {
     }
 }
 
+/**
+ * Load all months tags.
+ */
 function loadMonthItems () {
     let model = document.getElementById('edt-item-week');
     let contenu = document.getElementById('list-item');
@@ -168,6 +208,10 @@ function loadMonthItems () {
     }
 }
 
+/**
+ * Fill listeCours with all item from tab.
+ * @param {array} tab The lesson array.
+ */
 function fillListeCours (tab) {
     listeCours = tab;
 }
