@@ -92,51 +92,6 @@ function changeCSS (div) {
 }
 
 /**
- * Load all week tags.
- * @param {date} targetWeek The week selected.
- */
-function loadWeekItems (targetWeek) {
-    let dayTags = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
-    let dayTagsEN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    let targetDay = targetWeek;
-    
-    let model = document.getElementById('edt-item-week');
-    let contenu = document.getElementById('list-item');
-
-    while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
-
-    for (let i = 0; i < dayTags.length; i++) {
-        let modelClone = model.cloneNode(true);
-
-        modelClone.getElementsByClassName('daytag')[0].innerHTML = dayTags[i];
-        modelClone.style.display = 'block';
-        
-        // if day is selected day, set border
-        if (!(dayTagsEN.indexOf(getDayTag(targetDate)) - i)) {
-            modelClone.style.border = '1px solid white';
-        }
-
-        modelClone.onclick = function () {
-            targetDate = incrDate(targetDay, -(dayTagsEN.indexOf(targetDay) - i + 1));
-            loadDayItems(incrDate(targetDay, -(dayTagsEN.indexOf(targetDay) - i + 1)));
-            changeCSS(document.getElementById('daily'));
-            getTime();
-        };
-        contenu.appendChild(modelClone);
-    }
-}
-
-/**
- * Get monday date from the targetDate's week.
- */
-function getMondayDate () {
-    let dayTagsEN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    mondayDate = incrDate(targetDate, -(dayTagsEN.indexOf(getDayTag(targetDate))));
-    relativeMonday = mondayDate;
-}
-getMondayDate();
-
-/**
  * Load all day items.
  * @param {date} date The day selected.
  */
@@ -179,6 +134,43 @@ function loadDayItems (date) {
 }
 
 /**
+ * Load all week tags.
+ * @param {date} targetWeek The week selected.
+ */
+function loadWeekItems (targetWeek) {
+    let dayTags = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+    let dayTagsEN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    let targetDay = targetWeek;
+    
+    let model = document.getElementById('edt-item-week');
+    let contenu = document.getElementById('list-item');
+
+    while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
+
+    for (let i = 0; i < dayTags.length; i++) {
+        let modelClone = model.cloneNode(true);
+
+        let dayDate = incrDate(targetDay, -(dayTagsEN.indexOf(targetDay) - i + 1));
+
+        modelClone.getElementsByClassName('daytag')[0].innerHTML = dayTags[i] + ' ' + dayDate.slice(4,6) + ' ' + dayDate.slice(0,3);
+        modelClone.style.display = 'block';
+        
+        // if day is selected day, set border
+        if (!(dayTagsEN.indexOf(getDayTag(targetDate)) - i)) {
+            modelClone.style.border = '1px solid white';
+        }
+
+        modelClone.onclick = function () {
+            targetDate = incrDate(targetDay, -(dayTagsEN.indexOf(targetDay) - i + 1));
+            loadDayItems(incrDate(targetDay, -(dayTagsEN.indexOf(targetDay) - i + 1)));
+            changeCSS(document.getElementById('daily'));
+            getTime();
+        };
+        contenu.appendChild(modelClone);
+    }
+}
+
+/**
  * Load all months tags.
  */
 function loadMonthItems () {
@@ -207,6 +199,16 @@ function loadMonthItems () {
         contenu.appendChild(modelClone);
     }
 }
+
+/**
+ * Get monday date from the targetDate's week.
+ */
+function getMondayDate () {
+    let dayTagsEN = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    mondayDate = incrDate(targetDate, -(dayTagsEN.indexOf(getDayTag(targetDate))));
+    relativeMonday = mondayDate;
+}
+getMondayDate();
 
 /**
  * Fill listeCours with all item from tab.
