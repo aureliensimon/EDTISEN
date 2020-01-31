@@ -178,6 +178,9 @@ function loadMonthItems () {
     let contenu = document.getElementById('list-item');
     let nextMonday = mondayDate;
 
+    let months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+    let shortMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
     while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
     
     for (let i = 0; i < 4; i++) {
@@ -185,14 +188,17 @@ function loadMonthItems () {
         let modelClone = model.cloneNode(true);
 
         modelClone.style.display = 'block';
-        modelClone.getElementsByClassName('daytag')[0].innerHTML = 'du ' + incrDate(nextMonday, -6).slice(4,6) + ' au ' + nextMonday.slice(4,6);
+
+        let weekMonday = incrDate(nextMonday, -6).slice(4,6);
+        let weekSunday = nextMonday.slice(4,6);
+
+        modelClone.getElementsByClassName('daytag')[0].innerText = weekMonday + ' ' + months[shortMonths.indexOf(incrDate(nextMonday, -6).slice(0,3))] + '\n' + weekSunday + ' ' + months[shortMonths.indexOf(nextMonday.slice(0,3))];
         nextMonday = incrDate(nextMonday, 1);
 
         modelClone.onclick = function () {
             targetWeek = incrDate(mondayDate, i * 7);
             relativeMonday = targetWeek;
             loadWeekItems(targetWeek);
-            changeCSS(document.getElementById('weekly'));
             getTime();
         };
 

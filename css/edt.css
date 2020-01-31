@@ -202,7 +202,6 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
     width: 92%;
-    height: 50px;
     margin: 0 auto;
     margin-top: 25px;
     background-color: #32374F;
@@ -218,6 +217,7 @@ body {
     font-size: 6.5vmin;
     font-weight: 700;
     color: white;
+    display: block;
 }
 
 #no-lesson-emoji {
