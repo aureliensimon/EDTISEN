@@ -275,6 +275,8 @@ body {
     margin-top: -30px;
     margin-right: 20px;
     font-size: 4vmin;
+    position: absolute;
+    right: 10px;
     bottom: 0;
 }
 
