@@ -154,10 +154,11 @@ function loadWeekItems (targetWeek) {
 
         modelClone.getElementsByClassName('daytag')[0].innerHTML = dayTags[i] + ' ' + dayDate.slice(4,6) + ' ' + dayDate.slice(0,3);
         modelClone.style.display = 'block';
+        modelClone.style.border = '1px solid #0478EB';
         
         // if day is selected day, set border
         if (!(dayTagsEN.indexOf(getDayTag(targetDate)) - i)) {
-            modelClone.style.border = '1px solid white';
+            modelClone.style.border = '1px solid #DDDDDD';
         }
 
         modelClone.onclick = function () {
@@ -183,15 +184,19 @@ function loadMonthItems () {
 
     while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
     
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 52; i++) {
         nextMonday = incrDate(nextMonday, 6);
-        let modelClone = model.cloneNode(true);
 
+        let modelClone = model.cloneNode(true);
         modelClone.style.display = 'block';
+        modelClone.style.border = '1px solid #0478EB';
 
         let weekMonday = incrDate(nextMonday, -6).slice(4,6);
         let weekSunday = nextMonday.slice(4,6);
 
+        if (incrDate(nextMonday, -6) == relativeMonday) {
+            modelClone.style.border = '1px solid #DDDDDD';
+        }
         modelClone.getElementsByClassName('daytag')[0].innerText = weekMonday + ' ' + months[shortMonths.indexOf(incrDate(nextMonday, -6).slice(0,3))] + '\n' + weekSunday + ' ' + months[shortMonths.indexOf(nextMonday.slice(0,3))];
         nextMonday = incrDate(nextMonday, 1);
 
@@ -199,10 +204,15 @@ function loadMonthItems () {
             targetWeek = incrDate(mondayDate, i * 7);
             relativeMonday = targetWeek;
             loadWeekItems(targetWeek);
+            changeCSS(document.getElementById('weekly'));
             getTime();
         };
 
         contenu.appendChild(modelClone);
+
+        if (nextMonday.slice(0, 3) === 'Jul') {
+            break;
+        }
     }
 }
 
