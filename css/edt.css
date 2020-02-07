@@ -263,6 +263,11 @@ body {
     padding-left: 3.5vmax;
     display: inline-table;
 }
+
+.bottom-lesson {
+    position: relative;
+}
+
 .lesson-Location {
     display: inline-table;
     width: 40%;
@@ -270,6 +275,7 @@ body {
     margin-top: -30px;
     margin-right: 20px;
     font-size: 4vmin;
+    bottom: 0;
 }
 
 #nothingfound {
@@ -282,9 +288,4 @@ body {
 
 .loading {
     pointer-events: none;
-}
-
-.bottom-lesson {
-    border: 1px solid red;
-    display: block;
 }
