@@ -19,7 +19,7 @@ Il est possible d'obtenir EDTISEN de deux manières différentes :
   
 * PWA
 
-  La version web est disponible sur ce site : https://edt.tools
+  La version web est disponible sur ce site : https://www.edtisen.xyz
 <br><br><br><br><br><br><br><br>
 
 <img align="left" width="500" height="500" src="img/screen-edt.png">
@@ -47,11 +47,11 @@ lien direct : [activer votre agenda](https://web.isen-ouest.fr/uPortal/p/abonnem
 
   <img src=https://build.phonegap.com/apps/3719773/badge/2229398496/android.svg />
   
-  L'apk est disponible sur ce repository github : [lien du repository](https://github.com/aureliensimon/EDTISEN-apk)
+  [EDTISEN sur le Play Store](https://play.google.com/store/apps/details?id=com.phonegap.edtisen)
 
 * PWA
 
-  Pour installer EDTISEN depuis le navigateur de votre mobile, il faut se rendre sur le site [https://edtisen.tools](https://edtisen.tools), puis cliquer sur ***Ajouter à l'écran d'acceuil***
+  Pour installer EDTISEN depuis le navigateur de votre mobile, il faut se rendre sur le site https://www.edtisen.xyz, puis cliquer sur ***Ajouter à l'écran d'acceuil***
 
 # Suggestions
 Si vous avez des suggestions, n'hésiter pas à nous contacter afin de nous soumettre votre idée.
