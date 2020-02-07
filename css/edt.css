@@ -283,3 +283,8 @@ body {
 .loading {
     pointer-events: none;
 }
+
+.bottom-lesson {
+    border: 1px solid red;
+    display: block;
+}
