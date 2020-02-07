@@ -279,3 +279,7 @@ body {
     text-align: center;
     vertical-align: middle;
 }
+
+.loading {
+    pointer-events: none;
+}

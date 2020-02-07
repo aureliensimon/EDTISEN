@@ -13,6 +13,11 @@ var matiereUniques = [];
 function getCours () {
     let tab = [];
     let allMatieres = [];
+
+    Array.from(document.getElementsByClassName('navbar-container-item')).forEach(item => {
+        item.classList.add('loading');       
+    });
+
     ical.fromURL(url, {}, function (err, data) {
         if (err != undefined) {
             alert(err);
@@ -46,6 +51,10 @@ function getCours () {
                 loadColors();
                 break;
         }
+    });
+
+    Array.from(document.getElementsByClassName('navbar-container-item')).forEach(item => {
+        item.classList.remove('loading');
     });
 }
 getCours();
