@@ -253,6 +253,7 @@ body {
 .lesson-Professor {
     opacity: 1;
     padding-left: 3.5vmax;
+    padding-right: 4vmax;
     font-size: 3vmin;
 }
 .lesson-Date {
@@ -264,10 +265,6 @@ body {
     display: inline-table;
 }
 
-.bottom-lesson {
-    position: relative;
-}
-
 .lesson-Location {
     display: inline-table;
     width: 40%;
@@ -275,9 +272,6 @@ body {
     margin-top: -30px;
     margin-right: 20px;
     font-size: 5vmin;
-    position: absolute;
-    right: 10px;
-    bottom: 0;
 }
 
 #nothingfound {
