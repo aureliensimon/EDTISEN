@@ -11,7 +11,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700,900&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="../css/edt.css" />
-    <link rel="stylesheet" href="../css/swiper.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
     <title>Emploi Du Temps</title>
 </head>
 
@@ -31,8 +31,27 @@
         </div>
     </div>
 
-    <div id="list-item">
-        <p id="nothingfound">Chargement ...</p>
+    <style>
+        .swiper-container {
+            width: 100%;
+        }
+    </style>
+
+        <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+        <div class="swiper-slide" id="day0">
+            <div id="list-item">
+                <p id="nothingfound">Chargement ...</p>
+            </div>
+        </div>
+        <div class="swiper-slide" id="day1">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 4</div>
+        <div class="swiper-slide">Slide 5</div>
+        <div class="swiper-slide">Slide 6</div>
+        <div class="swiper-slide">Slide 7</div>
+        </div>
     </div>
 
     <div id="edt-item-day" style="display: none;">
@@ -55,8 +74,11 @@
         <span class="daytag"></span>
     </div>
 
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container');
+    </script>
     <script type="text/javascript" src="../js/edt.js"></script>
-    <script type="text/javascript" src="../js/swiper.min.js"></script>
     <script type="text/javascript" src="../js/bundle.js"></script>
 </body>
 
