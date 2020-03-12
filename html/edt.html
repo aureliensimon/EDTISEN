@@ -34,25 +34,23 @@
     <style>
         .swiper-container {
             width: 100%;
-            border: 1px solid red;
             min-height: calc(100vh - 230px);
         }
     </style>
 
-        <!-- Swiper -->
-    <div class="swiper-container">
+    <div id="list-item"></div>
+
+    <div class="swiper-container" id="swiper">
         <div class="swiper-wrapper">
         <div class="swiper-slide" id="day0">
-            <div id="list-item">
-                <p id="nothingfound">Chargement ...</p>
-            </div>
+            <p id="nothingfound">Chargement ...</p>
         </div>
-        <div class="swiper-slide" id="day1">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 4</div>
-        <div class="swiper-slide">Slide 5</div>
-        <div class="swiper-slide">Slide 6</div>
-        <div class="swiper-slide">Slide 7</div>
+        <div class="swiper-slide" id="day1"></div>
+        <div class="swiper-slide" id="day2"></div>
+        <div class="swiper-slide" id="day3"></div>
+        <div class="swiper-slide" id="day4"></div>
+        <div class="swiper-slide" id="day5"></div>
+        <div class="swiper-slide" id="day6"></div>
         </div>
     </div>
 
@@ -78,7 +76,11 @@
 
     <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
     <script>
-        var swiper = new Swiper('.swiper-container');
+        let swiper = new Swiper('.swiper-container');
+        swiper.on('slideChange', function () {
+            targetDate = incrDate(targetDate, -1 * (swiper.previousIndex - swiper.activeIndex));
+            getTime();
+        });
     </script>
     <script type="text/javascript" src="../js/edt.js"></script>
     <script type="text/javascript" src="../js/bundle.js"></script>
