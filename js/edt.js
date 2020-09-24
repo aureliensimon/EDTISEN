@@ -165,12 +165,12 @@ function loadWeekItems (targetWeek) {
         modelClone.style.border = '1px solid #0478EB';
         
         // if day is selected day, set border
-        if (!(dayTagsEN.indexOf(getDayTag(targetDate)) - i)) {
+        if (targetDate == dayDate) {
             modelClone.style.border = '1px solid #DDDDDD';
         }
 
         modelClone.onclick = function () {
-            targetDate = incrDate(targetDay, -(dayTagsEN.indexOf(targetDay) - i + 1));
+            targetDate = incrDate(targetDay, -(dayTagsEN.indexOf(targetDay) - i + 1) + swiper.activeIndex);
             loadDayItems(incrDate(targetDay, -(dayTagsEN.indexOf(targetDay) - i + 1)));
             changeCSS(document.getElementById('daily'));
             getTime();

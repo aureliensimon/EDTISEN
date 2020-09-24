@@ -40,7 +40,7 @@
     <div id="list-item"></div>
 
     <div class="swiper-container" id="swiper">
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" id="swiper-wrapper">
         <div class="swiper-slide" id="day0">
             <p id="nothingfound">Chargement ...</p>
         </div>
@@ -77,7 +77,7 @@
     <script>
         let swiper = new Swiper('.swiper-container');
         swiper.on('slideChange', function () {
-            targetDate = incrDate(targetDate, -1 * (swiper.previousIndex - swiper.activeIndex));
+            targetDate = incrDate(targetDate, (-1 * (swiper.previousIndex - swiper.activeIndex)));
             getTime();
         });
     </script>
