@@ -24,14 +24,13 @@ body {
     margin-top: 120px;
 }
 .button-redirection {
-    font-size: 5vmin;
+    font-size: 2.75vmax;
     font-family: 'Nunito', sans-serif;
-    display: inline-block;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     margin: auto;
-    text-align: left;
     padding-left: 50px;
-    vertical-align: middle;
-    line-height: 14vh;
     width: 70%;
     height: 14vh;
     margin-top: 15%;
@@ -49,12 +48,7 @@ body {
     background: linear-gradient(38deg, rgba(242,98,98,1) 0%, rgba(251,192,78,1) 100%); 
 }
 .arrow-img {
-    float: right;
-    /*width: 6vh;
-    margin-top: 2vh;
-    margin-right: 2vw;*/
-    width: 10vmin;
-    margin-top: 4vh;
-    margin-right: 15px;
+    width: 6vmax;
+    height: 6vmax;
     transform: rotate(-90deg);
 }

@@ -96,6 +96,18 @@ function changeCSS (div) {
  * @param {date} date The day selected.
  */
 function loadDayItems (date) {
+
+    let date1 = new Date(listeCours[0].date);
+    let date2 = new Date(listeCours[listeCours.length - 1].date);
+
+    let datediff = date2.getTime() - date1.getTime();
+    let daydiff = datediff / (1000 * 3600 * 24);
+
+    // Création de daydiff swipe
+    // Mettre chaque infos si info.date = date
+    // Se mettre au jour
+    // ez
+
     swiper.slideTo(0, 1, false);
     let model = document.getElementById('edt-item-day');
     let weekItems = document.getElementById('list-item');
@@ -110,6 +122,15 @@ function loadDayItems (date) {
         listeCours.forEach(function(element){
             if(element.date == incrDate(date, i)){
                 let modelClone = model.cloneNode(true);
+
+                if (element.type.trim() === "DEVOIRS SURVEILLES") {
+                    modelClone.getElementsByClassName('lesson-notes-devoir')[0].style.display = 'block';
+                }
+
+                if (element.notes) {
+                    modelClone.getElementsByClassName('lesson-notes-img')[0].style.display = 'block';
+                    modelClone.getElementsByClassName('lesson-notes-text')[0].innerHTML = element.notes;
+                }
     
                 modelClone.getElementsByClassName('lesson-Name')[0].innerHTML = (element.matiere2 === ' Evénement sans titre') ? element.matiere : element.matiere2;
                 modelClone.getElementsByClassName('lesson-Name')[0].style.borderLeft = '3.5px solid ' + localStorage.getItem(element.matiere2.replace(/\s/, ''));
@@ -240,4 +261,15 @@ getMondayDate();
  */
 function fillListeCours (tab) {
     listeCours = tab;
+}
+
+function showHideNotes (div) {
+    let e = div.getElementsByClassName('lesson-notes-text')[0];
+    let display = getComputedStyle(e).display;
+
+    if (display === 'none') {
+        e.style.display = 'block';
+    } else if (display === 'block') {
+        e.style.display = 'none';
+    }
 }

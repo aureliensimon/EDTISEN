@@ -36103,7 +36103,8 @@ function extend() {
 
 var ical = require('ical');
 var login = localStorage.getItem('login');
-var url = 'https://xopenproxy.herokuapp.com/' + 'http://web.isen-ouest.fr/EDT/' + login + '.ics';
+//var url = 'https://xopenproxy.herokuapp.com/' + 'http://web.isen-ouest.fr/EDT/' + login + '.ics';
+var url = 'https://srv-store2.gofile.io/download/ef99be45-846e-44ab-a06e-a51bcc9a5775/asimon23.ics';
 var matiereUniques = [];
 
 /**
