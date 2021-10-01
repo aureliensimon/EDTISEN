@@ -23,7 +23,7 @@ setInterval(getTime, 1000);
 function loadLogin () {
     if (localStorage.getItem('login') === null) {
         let login = '';
-        while (!(/^[a-z]{6}[1-2][0-9]$/.test(login))) {
+        while (!(/^[0-9]{7}$/.test(login))) {
             login = prompt('Votre Login ISEN', login);
         }
         localStorage.setItem('login', login);

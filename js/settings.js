@@ -43,7 +43,10 @@ function putPlaceholder (div) {
 function changeLogin (l) {
     let login = l.value;
     if (checkLogin(login)) {
+        console.log("OK");
         localStorage.setItem('login', login);
+    } else {
+        console.log("KO");
     }
 }
 
@@ -53,7 +56,7 @@ function changeLogin (l) {
  * @return {Boolean} whether the login is valid or not.
  */
 function checkLogin (login) {
-    return(/^[a-z]{3,}[0-9]{2,}$/.test(login));
+    return(/^[0-9]{7}$/.test(login));
 }
 
 /**

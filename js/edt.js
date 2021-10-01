@@ -29,6 +29,7 @@ function incrDate(pDate, number) {
         month: 'short',
         year: 'numeric'
     });
+
     return(formatDate(date));
 }
 
@@ -62,15 +63,9 @@ function getDayTag (date) {
  * @return {date} formated date (format : MMM DD YYYY).
  */
 function formatDate (date) {
-    return(
-        date.slice(3,6).charAt(0).toUpperCase()
-        + date.slice(3,6).charAt(1).normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-        + date.slice(4,6).slice(1)
-        + ' '
-        + date.slice(0,2)
-        + ' '
-        + date.slice(7,11)
-    );
+    let formatedDate = date.split(" ");
+
+    return formatedDate[1].substring(0,3) + " " + formatedDate[0] + " " + formatedDate[2];
 }
 
 /**
@@ -119,30 +114,38 @@ function loadDayItems (date) {
 
         while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
 
+        let coursToday = [];
+
         listeCours.forEach(function(element){
             if(element.date == incrDate(date, i)){
-                let modelClone = model.cloneNode(true);
-
-                if (element.type.trim() === "DEVOIRS SURVEILLES") {
-                    modelClone.getElementsByClassName('lesson-notes-devoir')[0].style.display = 'block';
-                }
-
-                if (element.notes) {
-                    modelClone.getElementsByClassName('lesson-notes-img')[0].style.display = 'block';
-                    modelClone.getElementsByClassName('lesson-notes-text')[0].innerHTML = element.notes;
-                }
-    
-                modelClone.getElementsByClassName('lesson-Name')[0].innerHTML = (element.matiere2 === ' Evénement sans titre') ? element.matiere : element.matiere2;
-                modelClone.getElementsByClassName('lesson-Name')[0].style.borderLeft = '3.5px solid ' + localStorage.getItem(element.matiere2.replace(/\s/, ''));
-                modelClone.getElementsByClassName('lesson-Professor')[0].innerHTML = element.prof;
-                modelClone.getElementsByClassName('lesson-Date-Start')[0].innerText = element.dateDebut;
-                modelClone.getElementsByClassName('lesson-Date-End')[0].innerText = element.dateFin;
-                modelClone.getElementsByClassName('lesson-Location-Number')[0].innerText = element.lieu.replace(/\s/, '');
-                modelClone.getElementsByClassName('lesson-Location-Number')[0].style.color = localStorage.getItem(element.matiere2.replace(/\s/, ''));
-                modelClone.style.display = 'block';
-    
-                contenu.appendChild(modelClone);
+                coursToday.push(element);
             }
+        });
+        
+        coursToday.sort((a, b) => a['dateDebut'] > b['dateDebut']);
+
+        coursToday.forEach(function(element) {
+            let modelClone = model.cloneNode(true);
+
+            if (element.matiere.trim() === "DEVOIRS") {
+                modelClone.getElementsByClassName('lesson-notes-devoir')[0].style.display = 'block';
+            }
+
+            if (element.notes) {
+                modelClone.getElementsByClassName('lesson-notes-img')[0].style.display = 'block';
+                modelClone.getElementsByClassName('lesson-notes-text')[0].innerHTML = element.notes;
+            }
+
+            modelClone.getElementsByClassName('lesson-Name')[0].innerHTML = (element.matiere2 === ' Evénement sans titre') ? element.matiere : element.matiere2;
+            modelClone.getElementsByClassName('lesson-Name')[0].style.borderLeft = '3.5px solid ' + localStorage.getItem(element.matiere2.replace(/\s/, ''));
+            modelClone.getElementsByClassName('lesson-Professor')[0].innerHTML = element.prof;
+            modelClone.getElementsByClassName('lesson-Date-Start')[0].innerText = element.dateDebut;
+            modelClone.getElementsByClassName('lesson-Date-End')[0].innerText = element.dateFin;
+            modelClone.getElementsByClassName('lesson-Location-Number')[0].innerText = element.lieu.replace(/\s/, '');
+            modelClone.getElementsByClassName('lesson-Location-Number')[0].style.color = localStorage.getItem(element.matiere2.replace(/\s/, ''));
+            modelClone.style.display = 'block';
+
+            contenu.appendChild(modelClone);
         });
     
         if (!contenu.firstChild) {

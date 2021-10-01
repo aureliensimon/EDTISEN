@@ -3,9 +3,10 @@
     browserify js/parser.js -o js/bundle.js
 */
 
-var ical = require('ical');
+const axios = require('axios');
+const ical = require('ical');
 var login = localStorage.getItem('login');
-var url = 'https://xopenproxy.herokuapp.com/' + 'http://web.isen-ouest.fr/EDT/' + login + '.ics';
+var url = 'https://xopenproxy.herokuapp.com/' + 'http://web.isen-ouest.fr/ICS/' + login + '.ics';
 var matiereUniques = [];
 
 /**
@@ -19,20 +20,20 @@ function getCours () {
         item.classList.add('loading');       
     });
 
-    ical.fromURL(url, {}, function (err, data) {
-        if (err != undefined) {
-            alert(err);
-        }
+    axios.get(url).then(function (response) {
+        var data = ical.parseICS(response.data);
+
         for (var i in data) {
             if (data.hasOwnProperty(i)) {
                 var ev = data[i];
-                if (data[i].type == 'VEVENT') {
-                    var cours = splitMaker("" + ev.description, "" + ev.start, "" + ev.end);
+                if (ev.type == 'VEVENT') {
+                    var cours = splitMaker("" + ev.description, "" + ev.start, "" + ev.end, "" + ev.location);
                     tab.push(cours);
                     allMatieres.push(cours.matiere2);
                 }
             }
         }
+
         let currentPage = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
 
         if(!tab.length && currentPage == 'edt.html') {
@@ -118,16 +119,29 @@ function getDate(date) {
  * @return {JSON} structured lesson.
  */
 function createJson(array) {
+
+    if (array.length < 9) {
+        for (let i = 0; i < 10; i++) {
+            if (array[i] == undefined) {
+                array[i] = "";
+            }
+        }
+    }
+
+    let matiere = array[4].replace(/ Matière : /, "");
+    let matiere2 = array[5].replace(/ Cours : /, "");
+    let prof = array[7].replace(/ Intervenant\(s\) : /, "");
+    let note = array[8].replace(/ Description : /, "");
+
     return ({
         date: array[0],
         dateDebut: array[1],
         dateFin: array[2],
-        type: array[3],
-        matiere: array[4],
-        matiere2: array[5],
-        prof: array[6],
-        lieu: array[7],
-        notes: array[8]
+        lieu: array[3],
+        matiere: matiere,
+        matiere2: matiere2,
+        prof: prof,
+        notes: note
     });
 }
 
@@ -138,11 +152,13 @@ function createJson(array) {
  * @param {date} end end date of the activity.
  * @return {array} JSONify array of all lesson.
  */
-function splitMaker(activity, start, end) {
+function splitMaker(activity, start, end, location) {
     var payload = [];
     var array = activity.split('\n');
+
     payload.push(getFullDate(start));
     payload.push(getDate(start), getDate(end));
+    payload.push(location);
     
     for (var i = 0; i < array.length; i++) {
         payload.push(array[i].split(/-(.+)/)[1]);
@@ -159,7 +175,6 @@ function splitMaker(activity, start, end) {
  */
 function storeMatieres (list) {
     list.forEach(matiere => {
-        matiere = matiere.replace(/\s/, '');
         if (localStorage.getItem(matiere) === null) {
             localStorage.setItem(matiere, 'rgb(255, 255, 255)');
         }
