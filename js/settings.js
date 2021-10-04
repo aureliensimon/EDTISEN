@@ -43,10 +43,7 @@ function putPlaceholder (div) {
 function changeLogin (l) {
     let login = l.value;
     if (checkLogin(login)) {
-        console.log("OK");
         localStorage.setItem('login', login);
-    } else {
-        console.log("KO");
     }
 }
 
