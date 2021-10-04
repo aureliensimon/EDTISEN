@@ -109,7 +109,7 @@ function loadDayItems (date) {
     while(weekItems.firstChild) weekItems.removeChild(weekItems.firstChild);
     document.getElementById('swiper').style.display = 'block';
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 13; i++) {
         let contenu = document.getElementById('day' + i);
 
         while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
@@ -214,6 +214,7 @@ function loadMonthItems () {
     let months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
     let shortMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+    document.getElementById('swiper').style.display = 'none';
     while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
     
     for (let i = 0; i < 52; i++) {
