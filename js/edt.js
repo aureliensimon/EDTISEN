@@ -121,8 +121,8 @@ function loadDayItems (date) {
                 coursToday.push(element);
             }
         });
-        
-        coursToday.sort((a, b) => a['dateDebut'] > b['dateDebut']);
+    
+        coursToday.sort((a, b) => a['dateDebut'] > b['dateDebut'] ? 1 : -1);
 
         coursToday.forEach(function(element) {
             let modelClone = model.cloneNode(true);
