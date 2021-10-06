@@ -136,13 +136,16 @@ function loadDayItems (date) {
                 modelClone.getElementsByClassName('lesson-notes-text')[0].innerHTML = element.notes;
             }
 
+            if (element.lieu != "undefined") {
+                modelClone.getElementsByClassName('lesson-Location-Number')[0].innerText = element.lieu.replace(/\s/, '');
+                modelClone.getElementsByClassName('lesson-Location-Number')[0].style.color = localStorage.getItem(element.matiere2.replace(/\s/, ''));
+            }
+            
             modelClone.getElementsByClassName('lesson-Name')[0].innerHTML = (element.matiere2 === ' Evénement sans titre') ? element.matiere : element.matiere2;
             modelClone.getElementsByClassName('lesson-Name')[0].style.borderLeft = '3.5px solid ' + localStorage.getItem(element.matiere2.replace(/\s/, ''));
             modelClone.getElementsByClassName('lesson-Professor')[0].innerHTML = element.prof;
             modelClone.getElementsByClassName('lesson-Date-Start')[0].innerText = element.dateDebut;
             modelClone.getElementsByClassName('lesson-Date-End')[0].innerText = element.dateFin;
-            modelClone.getElementsByClassName('lesson-Location-Number')[0].innerText = element.lieu.replace(/\s/, '');
-            modelClone.getElementsByClassName('lesson-Location-Number')[0].style.color = localStorage.getItem(element.matiere2.replace(/\s/, ''));
             modelClone.style.display = 'block';
 
             contenu.appendChild(modelClone);
