@@ -91,17 +91,7 @@ function changeCSS (div) {
  * @param {date} date The day selected.
  */
 function loadDayItems (date) {
-
-    let date1 = new Date(listeCours[0].date);
-    let date2 = new Date(listeCours[listeCours.length - 1].date);
-
-    let datediff = date2.getTime() - date1.getTime();
-    let daydiff = datediff / (1000 * 3600 * 24);
-
-    // Création de daydiff swipe
-    // Mettre chaque infos si info.date = date
-    // Se mettre au jour
-    // ez
+    /*
 
     swiper.slideTo(0, 1, false);
     let model = document.getElementById('edt-item-day');
@@ -109,7 +99,7 @@ function loadDayItems (date) {
     while(weekItems.firstChild) weekItems.removeChild(weekItems.firstChild);
     document.getElementById('swiper').style.display = 'block';
 
-    for (let i = 0; i < 13; i++) {
+    for (let i = 0; i < 65; i++) {
         let contenu = document.getElementById('day' + i);
 
         while(contenu.firstChild) contenu.removeChild(contenu.firstChild);
@@ -121,7 +111,7 @@ function loadDayItems (date) {
                 coursToday.push(element);
             }
         });
-    
+
         coursToday.sort((a, b) => a['dateDebut'] > b['dateDebut'] ? 1 : -1);
 
         coursToday.forEach(function(element) {
@@ -165,6 +155,7 @@ function loadDayItems (date) {
             contenu.appendChild(node);
         }
     }
+    */
 }
 
 /**
@@ -267,7 +258,81 @@ getMondayDate();
  * @param {array} tab The lesson array.
  */
 function fillListeCours (tab) {
-    listeCours = tab;
+    listeCours = tab.sort((a, b) => Date.parse(a['date']) > Date.parse(b['date']) ? 1 : -1);;
+
+    let date1 = new Date(listeCours[0].date);
+    let date2 = new Date(listeCours[listeCours.length - 1].date);
+
+    let daydiff = Math.ceil(Math.abs((date1 - date2) / (24 * 60 * 60 * 1000)));
+
+    let model = document.getElementById('edt-item-day');
+    let swipe = document.createElement('div');
+    let swiperwrapper = document.getElementById('swiper-wrapper');
+    swipe.classList.add("swiper-slide");
+
+    for (let i = 0; i < daydiff; i++) {
+        let swipeClone = swipe.cloneNode(true);
+        
+        swipeClone.setAttribute("id", "day" + (i + 1));
+        swipeClone.setAttribute("tdate", date1);
+
+        let coursToday = [];
+
+        listeCours.forEach(function(element){
+            if(Date.parse(element.date) ==  date1.getTime()) {
+                coursToday.push(element);
+            }
+        });
+
+        coursToday.sort((a, b) => a['dateDebut'] > b['dateDebut'] ? 1 : -1);
+
+        coursToday.forEach(function(element) {
+            let modelClone = model.cloneNode(true);
+
+            if (element.matiere.trim() === "DEVOIRS") {
+                modelClone.getElementsByClassName('lesson-notes-devoir')[0].style.display = 'block';
+            }
+
+            if (element.notes) {
+                modelClone.getElementsByClassName('lesson-notes-img')[0].style.display = 'block';
+                modelClone.getElementsByClassName('lesson-notes-text')[0].innerHTML = element.notes;
+            }
+
+            if (element.lieu != "undefined") {
+                modelClone.getElementsByClassName('lesson-Location-Number')[0].innerText = element.lieu.replace(/\s/, '');
+                modelClone.getElementsByClassName('lesson-Location-Number')[0].style.color = localStorage.getItem(element.matiere2.replace(/\s/, ''));
+            }
+            
+            modelClone.getElementsByClassName('lesson-Name')[0].innerHTML = (element.matiere2 === ' Evénement sans titre') ? element.matiere : element.matiere2;
+            modelClone.getElementsByClassName('lesson-Name')[0].style.borderLeft = '3.5px solid ' + localStorage.getItem(element.matiere2.replace(/\s/, ''));
+            modelClone.getElementsByClassName('lesson-Professor')[0].innerHTML = element.prof;
+            modelClone.getElementsByClassName('lesson-Date-Start')[0].innerText = element.dateDebut;
+            modelClone.getElementsByClassName('lesson-Date-End')[0].innerText = element.dateFin;
+            modelClone.style.display = 'block';
+
+            swipeClone.appendChild(modelClone);
+        });
+    
+        if (!swipeClone.firstChild) {
+            var node = document.createElement("P");
+            node.id = 'no-lesson-emoji';
+            var textnode = document.createTextNode("(ノ^o^)ノ");
+            node.appendChild(textnode);
+            swipeClone.appendChild(node);
+    
+            node = document.createElement("P");
+            node.id = 'no-lesson-text';
+            textnode = document.createTextNode("Aucun cours de prévu !");
+            node.appendChild(textnode);
+            swipeClone.appendChild(node);
+        }
+
+        swiperwrapper.appendChild(swipeClone);
+
+        date1.setDate(date1.getDate() + 1);
+    }
+
+    swiper.slideTo(0, 1, false);
 }
 
 function showHideNotes (div) {
