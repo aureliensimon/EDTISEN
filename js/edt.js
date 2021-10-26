@@ -129,11 +129,15 @@ function loadDayItems (date) {
 
             if (element.matiere.trim() === "DEVOIRS") {
                 modelClone.getElementsByClassName('lesson-notes-devoir')[0].style.display = 'block';
+            } else {
+                modelClone.getElementsByClassName('lesson-notes-devoir')[0].style.display = 'none';
             }
 
             if (element.notes) {
                 modelClone.getElementsByClassName('lesson-notes-img')[0].style.display = 'block';
                 modelClone.getElementsByClassName('lesson-notes-text')[0].innerHTML = element.notes;
+            } else {
+                modelClone.getElementsByClassName('lesson-notes-img')[0].style.display = 'none';
             }
 
             if (element.lieu != "undefined") {
