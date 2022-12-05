@@ -6,7 +6,7 @@
 const axios = require('axios');
 const ical = require('ical');
 var login = localStorage.getItem('login');
-var url = 'https://xopenproxy.herokuapp.com/' + 'http://web.isen-ouest.fr/ICS/' + login + '.ics';
+var url = 'https://xopenproxynew.herokuapp.com/' + 'http://web.isen-ouest.fr/ICS/' + login + '.ics';
 var matiereUniques = [];
 
 /**
