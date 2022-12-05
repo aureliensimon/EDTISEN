@@ -1,9 +1,9 @@
 
 /*  TO COMPILE THIS FILE    
-    browserify js/parser.js -o js/bundle.js
+    browserify js/parser.js -p esmify > js/bundle.js
 */
 
-const axios = require('axios');
+const axios = require('axios').default;
 const ical = require('ical');
 var login = localStorage.getItem('login');
 var url = 'https://xopenproxynew.herokuapp.com/' + 'http://web.isen-ouest.fr/ICS/' + login + '.ics';
